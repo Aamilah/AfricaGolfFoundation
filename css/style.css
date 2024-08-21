@@ -480,7 +480,7 @@ pre {
 
 @media (max-width: 390px) {
 	.slider .single-slider {
-		height: 500px;
+		height: 550px;
 	}
 
 	.slider .single-slider h1 {
@@ -493,7 +493,7 @@ pre {
 	}
 
 	.slider .single-slider .button {
-		margin-top: 10px;
+		margin-top: 60px;
 	}
 	.box-container {
 		display: none;
@@ -852,16 +852,17 @@ pre {
 		padding: 20px;
 	}
 }
-@media(max-width:360px){
+@media(max-width:390px){
 	.mission-box{
-		transform: rotate(90deg);
 		width: 130px;
 		height: 310px;
-		margin-left: 60px;
-		margin-top: -170px;
+		margin-top: -100px;
+		margin-left: 40px;
 	}
 	.mission-box-2{
-		display: none;
+		margin-top: -100px;
+		width: 130px;
+		height: 310px;
 	}
 }
 
@@ -881,14 +882,13 @@ pre {
 	display: block;
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 270px;
 	color: #ffffff;
 	margin: 0 auto;
-	padding-bottom: 20px;
 }
 .news-box-1{
 	width: 100%;
-	padding: 16px 0px 16px 0px;
+	padding: 10px 0px 10px 0px;
 	gap: 24px;
 	border-radius: 6px 0px 0px 0px;
 	opacity: 0px;
@@ -900,16 +900,15 @@ pre {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border-left: 2px solid #ffffff;
 	color: #ffffff;
-	font-size: 40px;
-	line-height: 100px;
-	margin-left: 15px;
+	margin-left: 10px;
 }
 .news-box-1 .text-news-box-1 {
-	padding-left: 30px;
+	padding-left: 20px;
 }
-
+.news-box .text-news-box{
+	padding: 10px;
+}
 /******* Middle section CSS Start ******/
 /* -------- Landing page ------- */
 .partners-section {
@@ -1100,8 +1099,8 @@ pre {
 }
 .hero-box,
 .hero-box-2 {
-	width: 230px;
-	height: 560px;
+	width: 210px;
+	height: 550px;
 	border: 4px solid #ffffff;
 	box-shadow: 0px 0px 30px -6px #0F0E14B2;
 	border-radius: 0% 100% 0% 100% / 55% 40% 60% 45%;
@@ -1110,7 +1109,6 @@ pre {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-image: url('images/logo-icon.jpeg');
 }
 
 .hero-box-2 {
@@ -2255,12 +2253,114 @@ h3 {
 		margin-top: -10px;
 	}
 }
-@media(max-width:360px){
+@media(max-width:390px){
 	h1{
 		font-size: 25px; 
 	}
 	.about{
+		margin-top: 270px;
+	}
+	.mission-1{
+		margin-top: -60px;
+	}
+	.about-curve-left{
+		display: none;
+	}
+	.about-curve-right{
+		display: none;
+	}
+	.news{
 		margin-top: 300px;
 	}
+	
+	.img-box img{
+		width: 310px;
+		height: 240px;
+	}
+	.news-box-1{
+		width: 92%;
+		margin-left: 14px;
+	}
+	.news-box-1 .text-news-box-1 {
+		padding: 30px;
+	}
+	.partners-section{
+		margin-top: 10px;
+	}
+	.modal-content .icon-border{
+		display: none;
+	}
+	.employ{
+		margin-top: 50px;
+	}
+	.events h1{
+		margin-left: 100px;
+	}
+	.box-cup{
+		margin-left: 20px;
+		margin-top: -40px;
+	}
+	.box-cup-2{
+		margin-left: 190px;
+		margin-top: -90px;
+	}
+	.testimonial{
+		padding-top: 90px;
+	}
+	.event-1{
+		margin-top: 400px;
+	}
+	.who-1{
+		margin-top: -30px;
+	}
+	.who-2{
+		margin-top: 200px ;
+	}
+	.box-who-2{
+		margin-top: -1060px;
+	}
+	.who-3{
+		margin-top: -180px;
+	}
+	.section-padding-right{
+		margin-right: 0;	
+	}
+	.section-padding-left{
+		margin-left: 0;
+	}
+	.who-4{
+		margin-top: 300px;
+	}
+	.box-who-4{
+		margin-top: -900px;
+	}
+	.box-who-5{
+		margin-top: -300px;
+	}
+	.who-5{
+		margin-bottom: 50px;
+	}
+	.text-box-who-5{
+		margin-top: -30px;
+	}
+	.donate{
+		margin-top: 500px;
 
+	}
+	.contact{
+		margin-top: 300px;
+	}
+	.contact-box{
+		margin: 10px;
+	}
+	.contact-icon{
+		margin-top: 20px;
+	}
+	.contact-box .text-left{
+		margin-left: -10px;
+	}
+	.socials{
+		display: flex;
+		margin-left: 50px;
+	}
 }
