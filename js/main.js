@@ -1,3 +1,9 @@
+  $(window).on('load', function() {
+    $('#loading').fadeOut('slow', function() {
+      $('#content').css('visibility', 'visible');
+    });
+  });
+
 wow = new WOW();
 wow.init();
 $(document).ready(function(e) {
@@ -247,5 +253,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Set the value of the date input field
   document.getElementById('date').value = currentDate;
+
 
 
