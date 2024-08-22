@@ -447,14 +447,12 @@ maximum-scale=1.0, user-scalable=no" />
               <div class="payment-info">
                 <h3>Donation Summary</h3>
                 <div class="payment-info-side">
-                  <label for="total"> Amount: </label>
-                  <input type="text" id="total" class="price-input" placeholder="100">
+                  <label for="total">Amount:</label>
+                  <input type="number" id="total" class="price-input" placeholder="100" readonly>
                   <label for="date">Date of Donation</label>
                   <input type="text" id="date" class="date-input">
-
-                    <p>Total <span>$100</span></p>
-                </div>
-                
+                  <p>Total <span id="total-display">$100</span></p>
+              </div> 
                   <button class="submit-button">Continue to Payment</button>
               </div>
             </div>
