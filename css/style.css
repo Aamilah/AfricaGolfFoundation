@@ -1852,6 +1852,9 @@ input {
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
 }
+.phone-input{
+	width: 666px;
+}
 /* Ensure the icon spans overlap */
 .contact-icon-change {
 	position: relative;
@@ -2376,5 +2379,8 @@ h3 {
 	.socials{
 		display: flex;
 		margin-left: 50px;
+	}
+	.phone-input{
+		width: 280px;
 	}
 }

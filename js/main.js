@@ -1,70 +1,70 @@
+//   loading spinner start
   $(window).on('load', function() {
     $('#loading').fadeOut('slow', function() {
       $('#content').css('visibility', 'visible');
     });
   });
+//   loading spinner end
 
+// animation start
 wow = new WOW();
 wow.init();
 $(document).ready(function(e) {
-
-$('#video-icon').on('click',function(e){
-e.preventDefault();
-$('.video-popup').css('display','flex');
-$('.iframe-src').slideDown();
-});
-$('.video-popup').on('click',function(e){
-var $target = e.target.nodeName;
-var video_src = $(this).find('iframe').attr('src');
-if($target != 'IFRAME'){
-$('.video-popup').fadeOut();
-$('.iframe-src').slideUp();
-$('.video-popup iframe').attr('src'," ");
-$('.video-popup iframe').attr('src',video_src);
-}
-});
-
-$('.slider').bxSlider({
-pager: false
-});
+    $('#video-icon').on('click',function(e){
+        e.preventDefault();
+        $('.video-popup').css('display','flex');
+        $('.iframe-src').slideDown();
+    });
+    $('.video-popup').on('click',function(e){
+        var $target = e.target.nodeName;
+        var video_src = $(this).find('iframe').attr('src');
+        if($target != 'IFRAME'){
+            $('.video-popup').fadeOut();
+            $('.iframe-src').slideUp();
+            $('.video-popup iframe').attr('src'," ");
+            $('.video-popup iframe').attr('src',video_src);
+        }
+    });
+    $('.slider').bxSlider({
+        pager: false
+    });
 });
 
+// animation end
+
+// navbar animation start
 $(window).on("scroll",function () {
-
-var bodyScroll = $(window).scrollTop(),
-navbar = $(".navbar");
-
-if(bodyScroll > 50){
-$('.navbar-logo img').attr('src','images/logo-small.jpg');
-navbar.addClass("nav-scroll");
-
-}else{
-$('.navbar-logo img').attr('src','images/logo-small-bg.png');
-navbar.removeClass("nav-scroll");
-}
-
+    var bodyScroll = $(window).scrollTop(),
+    navbar = $(".navbar");
+    if(bodyScroll > 50){
+        $('.navbar-logo img').attr('src','images/logo-small.jpg');
+        navbar.addClass("nav-scroll");
+    }else{
+        $('.navbar-logo img').attr('src','images/logo-small-bg.png');
+        navbar.removeClass("nav-scroll");
+    }
 });
 $(window).on("load",function (){
-var bodyScroll = $(window).scrollTop(),
-navbar = $(".navbar");
-
-if(bodyScroll > 50){
-$('.navbar-logo img').attr('src','images/logo2.png');
-navbar.addClass("nav-scroll");
-}else{
-$('.navbar-logo img').attr('src','images/logo1.jpg');
-navbar.removeClass("nav-scroll");
-}
-
-$.scrollIt({
-
-easing: 'swing',      // the easing function for animation
-scrollTime: 900,       // how long (in ms) the animation takes
-activeClass: 'active', // class given to the active nav element
-onPageChange: null,    // function(pageIndex) that is called when page is changed
-topOffset: -63
+    var bodyScroll = $(window).scrollTop(),
+    navbar = $(".navbar");
+    if(bodyScroll > 50){
+        $('.navbar-logo img').attr('src','images/logo2.png');
+        navbar.addClass("nav-scroll");
+    }else{
+        $('.navbar-logo img').attr('src','images/logo1.jpg');
+        navbar.removeClass("nav-scroll");
+    }
+    $.scrollIt({
+        easing: 'swing',      // the easing function for animation
+        scrollTime: 900,       // how long (in ms) the animation takes
+        activeClass: 'active', // class given to the active nav element
+        onPageChange: null,    // function(pageIndex) that is called when page is changed
+        topOffset: -63
+    });
 });
-});
+// navbar animation end
+
+// Carousel Start
 $(".hero-slider").owlCarousel({
 		loop:true,
 		autoplay:true,
@@ -75,7 +75,8 @@ $(".hero-slider").owlCarousel({
 		items:1,
 		nav:true,
 		dots:false,
-	});
+    });
+
 $('.article-slider').owlCarousel({
 		autoplay:true,
 		autoplayTimeout:4000,
@@ -101,83 +102,84 @@ $('.article-slider').owlCarousel({
 		}
 	});
 
-	$(".custom-carousel").owlCarousel({
-		autoWidth: true,
-		loop: true
-	  });
-	  $(document).ready(function () {
-		$(".custom-carousel .item").click(function () {
-		  $(".custom-carousel .item").not($(this)).removeClass("active");
-		  $(this).toggleClass("active");
-		});
-	});
-
-	// Testimonials carousel
-	$(".testimonial-carousel").owlCarousel({
-		autoplay: false,
-		smartSpeed: 1000,
-		center: true,
-		dots: false,
-		loop: true,
-		nav : true,
-		navText : [
-			'<i class="bi bi-arrow-left"></i>',
-			'<i class="bi bi-arrow-right"></i>'
-		],
-		responsive: {
-			0:{
-				items:1
-			},
-			768:{
-				items:2
-			}
-		}
-	});
-        // Header carousel
-        $(".modal-carousel").owlCarousel({
-            autoplay: false,
-            animateOut: 'fadeOutLeft',
-            items: 1,
-            dots: true,
-            loop: true,
-            nav : true,
-            navText : [
-                '<i class="bi bi-chevron-left"></i>',
-                '<i class="bi bi-chevron-right"></i>'
-            ]
-        });
-    // script.js
-    document.addEventListener('DOMContentLoaded', (event) => {
-    const modal1 = document.getElementById('modal1');
-    const modal2 = document.getElementById('modal2');
-    const modal3 = document.getElementById('modal3');
-
-    const openModal1Btn = document.getElementById('openModal1Btn');
-    const openModal2Btn = document.getElementById('openModal2Btn');
-    const openModal3Btn = document.getElementById('openModal3Btn');
-
-    const closeBtns = document.querySelectorAll('.closeBtn');
-
-    // Functions to open the modals
-    openModal1Btn.addEventListener('click', () => {
-        modal1.style.display = 'block';
+$(".custom-carousel").owlCarousel({
+    autoWidth: true,
+    loop: true
     });
-
-    openModal2Btn.addEventListener('click', () => {
-        modal2.style.display = 'block';
+    $(document).ready(function () {
+    $(".custom-carousel .item").click(function () {
+        $(".custom-carousel .item").not($(this)).removeClass("active");
+        $(this).toggleClass("active");
     });
+});
 
-    openModal3Btn.addEventListener('click', () => {
-        modal3.style.display = 'block';
-    });
+// Testimonials carousel
+$(".testimonial-carousel").owlCarousel({
+    autoplay: false,
+    smartSpeed: 1000,
+    center: true,
+    dots: false,
+    loop: true,
+    nav : true,
+    navText : [
+        '<i class="bi bi-arrow-left"></i>',
+        '<i class="bi bi-arrow-right"></i>'
+    ],
+    responsive: {
+        0:{
+            items:1
+        },
+        768:{
+            items:2
+        }
+    }
+});
+$(".modal-carousel").owlCarousel({
+    autoplay: false,
+    animateOut: 'fadeOutLeft',
+    items: 1,
+    dots: true,
+    loop: true,
+    nav : true,
+    navText : [
+        '<i class="bi bi-chevron-left"></i>',
+        '<i class="bi bi-chevron-right"></i>'
+    ]
+});
+// Carousel End
 
-    // Function to close the modals
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', (event) => {
-            const modalId = event.target.getAttribute('data-modal');
-            document.getElementById(modalId).style.display = 'none';
-        });
+// Modal Start
+document.addEventListener('DOMContentLoaded', (event) => {
+const modal1 = document.getElementById('modal1');
+const modal2 = document.getElementById('modal2');
+const modal3 = document.getElementById('modal3');
+
+const openModal1Btn = document.getElementById('openModal1Btn');
+const openModal2Btn = document.getElementById('openModal2Btn');
+const openModal3Btn = document.getElementById('openModal3Btn');
+
+const closeBtns = document.querySelectorAll('.closeBtn');
+
+// Functions to open the modals
+openModal1Btn.addEventListener('click', () => {
+    modal1.style.display = 'block';
+});
+
+openModal2Btn.addEventListener('click', () => {
+    modal2.style.display = 'block';
+});
+
+openModal3Btn.addEventListener('click', () => {
+    modal3.style.display = 'block';
+});
+
+// Function to close the modals
+closeBtns.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+        const modalId = event.target.getAttribute('data-modal');
+        document.getElementById(modalId).style.display = 'none';
     });
+});
 
     // Close the modals if the user clicks anywhere outside of it
     window.addEventListener('click', (event) => {
@@ -190,10 +192,10 @@ $('.article-slider').owlCarousel({
         }
     });
 });
+// Modal End
 
-
-
-	document.getElementById('add-method').addEventListener('click', function() {
+// Payment Section Add Card Start
+document.getElementById('add-method').addEventListener('click', function() {
     const paymentMethods = document.getElementById('payment-methods');
     const newMethod = document.createElement('div');
     newMethod.classList.add('payment-method');
@@ -218,22 +220,40 @@ document.querySelectorAll('.remove-method').forEach(button => {
         button.parentElement.remove();
     });
 });
-  
+// Payment Section Add Card End
+
+// International Phon Num Input section start
 const phoneInputField = document.querySelector("#phone");
 const phoneInput = window.intlTelInput(phoneInputField, {
   utilsScript:
 	"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });
+// International Phon Num Input section End
 
+// Automatic total and Radio buttons (Payment Section)
 document.addEventListener("DOMContentLoaded", function() {
     var amountInput = document.getElementById("amount");
+    var totalInput = document.getElementById("total");
+    var totalDisplay = document.getElementById("total-display");
     var radioButtons = document.querySelectorAll("input[name='preset-amount']");
     var radioOptions = document.querySelectorAll(".radio-option");
 
+    // Function to update the total amount and display
+    function updateTotalAmount() {
+        var amount = amountInput.value;
+        totalInput.value = amount;
+        totalDisplay.textContent = `$${amount}`;
+    }
+
+    // Update total when amount input changes manually
+    amountInput.addEventListener("input", updateTotalAmount);
+
+    // Update total when preset amount is selected
     radioButtons.forEach(function(radio, index) {
         radio.addEventListener("change", function() {
             if (this.checked) {
                 amountInput.value = this.value;
+                updateTotalAmount(); // Automatically update total
                 radioOptions.forEach(function(option) {
                     option.classList.remove("selected");
                 });
@@ -241,18 +261,23 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+
+    // Initialize the total amount on page load
+    updateTotalAmount();
 });
-  // Get the current date
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-  const year = today.getFullYear();
 
-  // Format the date as DD/MM/YYYY
-  const currentDate = `${day}/${month}/${year}`;
 
-  // Set the value of the date input field
-  document.getElementById('date').value = currentDate;
+// Get the current date
+const today = new Date();
+const day = String(today.getDate()).padStart(2, '0');
+const month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+const year = today.getFullYear();
+
+// Format the date as DD/MM/YYYY
+const currentDate = `${day}/${month}/${year}`;
+
+// Set the value of the date input field
+document.getElementById('date').value = currentDate;
 
 
 
