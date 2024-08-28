@@ -35,6 +35,13 @@ h1 {
 	font-weight: 700; 
 	line-height: 35px; 
 } 
+h2{
+	font-size: 30px; 
+	font-style: normal; 
+	font-variant: normal; 
+	font-weight: 700; 
+	line-height: 35px; 
+}
 h3 { 
 	font-size: 23px; 
 	font-style: normal; 
@@ -106,8 +113,8 @@ pre {
 	box-shadow: 9px 12px 0px 0px #ffa302;
 	padding: 20px;
 }
-.box-shadow-orange{
-	box-shadow: 9px 12px 0px 0px #ffa302;
+.container-xxl{
+	padding: 40px;
 }
 .section-padding-left{
 	margin-left: 40px;
@@ -204,7 +211,15 @@ pre {
     background-repeat: no-repeat;
     position: relative; /* Ensures .overlay stays within the container */
 }
-
+.streamer-section .streamer{
+	background-color: #fff;
+	
+	height: 650px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Ensures .overlay stays within the container */
+}
 .overlay {
     position: absolute;
     margin-top: 0;
@@ -213,15 +228,32 @@ pre {
     height: 100%;
     background-color: rgba(1, 79, 30, 0.58);
 }
-
+.slider-margin{
+	margin-top: 130px;
+}
+.slider-overlay {
+    position: absolute;
+    margin-top: 0;
+    left: 0;
+    width: 100%;
+    height: 72%;
+    background-color: rgba(1, 79, 30, 0.58);
+}
 /* Image Opacity for Single Slider */
 .slider .single-slider img {
     opacity: 0.6;
 }
+.streamer img{
+	opacity: 0.6;
 
+}
 /* Text Positioning for Single Slider */
 .slider .single-slider .text {
     margin-top: 160px;
+}
+.streamer .text{
+	margin-top: 160px;
+	
 }
 
 .slider.index2 .single-slider .text {
@@ -247,7 +279,14 @@ pre {
     padding: 0;
     line-height: 42px;
 }
-
+.streamer h1{
+	color: #fff;
+    font-size: 38px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    line-height: 42px;
+}
 /* Special Span Style within Heading */
 .slider .single-slider h1 span {
     color: #7233b6;
@@ -260,7 +299,12 @@ pre {
     font-weight: 400;
     font-size: 16px;
 }
-
+.streamer p{
+    color: #2C2D3F;
+    margin-top: 27px;
+    font-weight: 400;
+    font-size: 16px;
+}
 /* Button Container Styles */
 .slider .single-slider .button {
     margin-top: 50px;
@@ -441,16 +485,16 @@ pre {
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-	.slider .single-slider {
+	.slider .single-slider, .streamer-section .streamer {
 		height: 550px;
 	}
 
-	.slider .single-slider h1 {
+	.slider .single-slider, .streamer-section .streamer  h1 {
 		font-size: 32px;
 		line-height: 36px;
 	}
 
-	.slider .single-slider p {
+	.slider .single-slider, .streamer-section .streamer  p {
 		font-size: 14px;
 	}
 
@@ -461,17 +505,17 @@ pre {
 }
 
 @media (max-width: 768px) {
-	.slider .single-slider {
+	.slider .single-slider  {
 		height: 450px;
 		margin-top: 50px;
 	}
 
-	.slider .single-slider h1 {
+	.slider .single-slider, .streamer-section .streamer  h1 {
 		font-size: 28px;
 		line-height: 32px;
 	}
 
-	.slider .single-slider p {
+	.slider .single-slider, .streamer-section .streamer  p {
 		font-size: 14px;
 	}
 
@@ -493,16 +537,16 @@ pre {
 }
 
 @media (max-width: 390px) {
-	.slider .single-slider {
+	.slider .single-slider, .streamer-section .streamer  {
 		height: 550px;
 	}
 
-	.slider .single-slider h1 {
+	.slider .single-slider, .streamer-section .streamer  h1 {
 		font-size: 24px;
 		line-height: 28px;
 	}
 
-	.slider .single-slider p {
+	.slider .single-slider, .streamer-section .streamer  p {
 		font-size: 14px;
 	}
 
@@ -644,10 +688,8 @@ pre {
 	border-radius: 6px 0px 0px 0px;
 	opacity: 0px;
 	background-color: #ffffff;
-	transition: .5s;
 }
 .about-box:hover{
-    margin-top: -10px;
     box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .08);}
 .about-box h3{
 	margin-top: 30px;
@@ -923,6 +965,34 @@ pre {
 .news-box .text-news-box{
 	padding: 10px;
 }
+
+.news-img img{
+	width: 100%;
+	border: 7px solid #fff;
+}
+.news-text{
+	padding-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.news-text p{
+	font-size: 18px;
+}
+.margin-top-60{
+	margin-top: 60px;
+}
+.news-details blockquote{
+	font-size: 16px;
+	float: right;
+	font-weight: 700;
+	padding-top: 20px;
+}
+.news-details p{
+	font-size: 16px;
+	font-weight: 700;
+	padding-top: 20px;
+	float: left;
+}
 /******* Middle section CSS Start ******/
 /* -------- Landing page ------- */
 .partners-section {
@@ -1096,7 +1166,6 @@ pre {
 }
 
 .hero .hero-container {
-	margin-top:100px;
 	height: 100%;
 	width: 100%;
 	background-size: cover;
@@ -1114,7 +1183,7 @@ pre {
 .hero-box,
 .hero-box-2 {
 	width: 210px;
-	height: 550px;
+	height: 500px;
 	border: 4px solid #ffffff;
 	box-shadow: 0px 0px 30px -6px #0F0E14B2;
 	border-radius: 0% 100% 0% 100% / 55% 40% 60% 45%;
@@ -1803,10 +1872,69 @@ input {
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
+.donation-type {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+	gap: 20px;
+
+}
+.donation-option{
+	width: 100%;
+}   
+.option-label {
+	width: 100%;
+    border: 1px solid #ccc;
+	border-radius: 5px; /* Rounded corners */
+	padding: 10px 20px; /* Padding for the button */
+	cursor: pointer; /* Cursor changes to pointer on hover */
+	transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+}
+
+.donation-option input[type="radio"] {
+	display: none; /* Hide the default radio button */
+}
+
+.donation-option .option-label {
+	font-size: 14px; /* Adjust the font size */
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	color: #333; /* Text color */
+}
+
+.donation-option input[type="radio"]:checked + .option-label {
+	background-color: #e0ffe0; /* Light green background for selected */
+	border: 2px solid #4caf50; /* Green border for selected */
+	color: #333; /* Text color for selected */
+}
+
+.donation-option:hover .option-label {
+	background-color: #f0f0f0; /* Background color on hover */
+}
+
+.donation-option input[type="radio"]:not(:checked) + .option-label {
+	background-color: #fff; /* White background for unselected */
+	border: 2px solid #ccc; /* Light gray border for unselected */
+}
+
+  
 #contact_form textarea {
 	resize: none;
 	padding: 1rem;
-	height: 150px;
+	height: 200px;
+	background: #fff;
+	border: 1px solid #e4e4e4;
+	margin-bottom: 1rem;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#beneficiary-form textarea {
+	resize: none;
+	padding: 1rem;
+	height: 200px;
 	background: #fff;
 	border: 1px solid #e4e4e4;
 	margin-bottom: 1rem;
@@ -1836,7 +1964,12 @@ input {
 	border-radius: 90px;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
-
+.beneficiary-form{
+	background-color: #fff;
+	padding: 20px 20px 10px 15px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	margin-bottom: 20px;
+}
 .radio-group {
     display: flex;
     justify-content: space-between;
@@ -1952,11 +2085,19 @@ button.remove-method:hover {
 	margin:23px 0px;
 }
 .payment-item i {
-	font-size: 16px;
+	display: block;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+	border-radius: 90px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	text-align: center;
 }
 .payment-item p {
 	line-height: 20px;
-	margin: 0;
+	margin: 10px;
 }
 
 .price-input,
@@ -2031,6 +2172,21 @@ font-size: 16px;
 	width: 100%;
 	height: 100%;
 	background: url(images/pattern.png);
+}
+.footer-socials{
+	display: flex;
+}
+.footer-socials-icon {
+	display: block;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+	border-radius: 90px;
+	padding-top: 10px;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+	text-align: center;
 }
 .footer ul {
 	list-style: none;
@@ -2382,5 +2538,11 @@ h3 {
 	}
 	.phone-input{
 		width: 280px;
+	}
+	.heart{
+		display: none;
+	}
+	.slider-margin{
+		margin-top: 0px;
 	}
 }

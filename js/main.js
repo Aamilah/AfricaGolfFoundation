@@ -194,6 +194,7 @@ closeBtns.forEach(btn => {
 });
 // Modal End
 
+
 // Payment Section Add Card Start
 document.getElementById('add-method').addEventListener('click', function() {
     const paymentMethods = document.getElementById('payment-methods');
@@ -222,14 +223,99 @@ document.querySelectorAll('.remove-method').forEach(button => {
 });
 // Payment Section Add Card End
 
-// International Phon Num Input section start
+// International Phone Num Input section start
 const phoneInputField = document.querySelector("#phone");
 const phoneInput = window.intlTelInput(phoneInputField, {
   utilsScript:
 	"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });
-// International Phon Num Input section End
+// International Phone Num Input section End
 
+document.addEventListener('DOMContentLoaded', function() {
+    const donationTypeRadios = document.querySelectorAll('input[name="donation-type"]');
+    const monetaryDonationSection = document.getElementById('monetary-donation');
+    const equipmentDonationSection = document.getElementById('equipment-donation');
+    const paymentMethodsSection = document.getElementById('payment-methods');
+  
+    // Initially hide all donation-specific sections
+    monetaryDonationSection.style.display = 'none';
+    equipmentDonationSection.style.display = 'none';
+    paymentMethodsSection.style.display = 'none';
+  
+    // Function to show or hide sections based on the selected donation type
+    function updateDonationSections() {
+      const selectedDonationType = document.querySelector('input[name="donation-type"]:checked');
+      if (selectedDonationType) {
+        if (selectedDonationType.value === 'monetary') {
+          monetaryDonationSection.style.display = 'block';
+          paymentMethodsSection.style.display = 'block';
+          equipmentDonationSection.style.display = 'none';
+        } else if (selectedDonationType.value === 'equipment') {
+          equipmentDonationSection.style.display = 'block';
+          monetaryDonationSection.style.display = 'none';
+          paymentMethodsSection.style.display = 'none';
+        }
+      }
+    }
+  
+    // Add event listener to update sections when the donation type changes
+    donationTypeRadios.forEach(radio => {
+        radio.addEventListener('change', updateDonationSections);
+    });
+});
+  
+
+// Function to update the total quantity of equipment
+function updateTotalEquipmentQuantity() {
+    let totalQuantity = 0;
+
+    // Select all equipment quantity input fields and calculate the total
+    document.querySelectorAll('input[name="equipment-quantity[]"]').forEach(input => {
+        totalQuantity += parseInt(input.value) || 0; // Ensure NaN is handled by defaulting to 0
+    });
+
+    // Update the total quantity display
+    document.getElementById('equipment-quantity-total').value = totalQuantity;
+    document.getElementById('equipment-quantity-total-1').value = totalQuantity;
+    document.getElementById('equipment-quantity-total-2') = totalQuantity;
+}
+
+// Event listener to add new equipment fields dynamically
+document.getElementById('add-equipment').addEventListener('click', function() {
+    const equipmentFields = document.getElementById('equipment-fields');
+    const newEquipmentGroup = document.createElement('div');
+    newEquipmentGroup.classList.add('equipment-group');
+    newEquipmentGroup.innerHTML = `
+        <label for="equipment-type">Type:</label>
+        <input type="text" name="equipment-type[]" class="form-input" placeholder="e.g., Golf Clubs">
+        
+        <label for="equipment-quantity">Quantity:</label>
+        <input type="number" name="equipment-quantity[]" class="form-input equipment-quantity" placeholder="e.g., 5">
+
+        <button type="button" class="remove-equipment">Remove</button>
+    `;
+    
+    equipmentFields.appendChild(newEquipmentGroup);
+
+    // Attach event listener to new quantity input to update total quantity
+    newEquipmentGroup.querySelector('input[name="equipment-quantity[]"]').addEventListener('input', updateTotalEquipmentQuantity);
+
+    // Attach event listener to the remove button to handle dynamic deletion
+    newEquipmentGroup.querySelector('.remove-equipment').addEventListener('click', function() {
+        newEquipmentGroup.remove();
+        updateTotalEquipmentQuantity();  // Update total quantity after removal
+    });
+});
+
+// Attach event listeners to all initial equipment quantity inputs to update total quantity
+document.querySelectorAll('input[name="equipment-quantity[]"]').forEach(input => {
+    input.addEventListener('input', updateTotalEquipmentQuantity);
+});
+
+// Initial call to set the total quantity based on the default state of the form
+updateTotalEquipmentQuantity();
+
+ 
 // Automatic total and Radio buttons (Payment Section)
 document.addEventListener("DOMContentLoaded", function() {
     var amountInput = document.getElementById("amount");
@@ -265,7 +351,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize the total amount on page load
     updateTotalAmount();
 });
-
 
 // Get the current date
 const today = new Date();

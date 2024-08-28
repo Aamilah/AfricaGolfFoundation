@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale = 1.0, 
 maximum-scale=1.0, user-scalable=no" /> 
-<title>Africa Golf Foundation | Contact Us</title>
+<title>Africa Golf Foundation | Donate</title>
 <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
@@ -43,27 +43,28 @@ maximum-scale=1.0, user-scalable=no" />
         <li class="nav-item"> <a class="nav-link" href="who-we-do-it-for.html">Who We Do It For</a> </li>
         <li class="nav-item"> <a class="nav-link active" href="donate.html">Donate/Partner</a> </li>
         <li class="nav-item"> <a class="nav-link" href="beneficiary.html">Become a Beneficiary</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="news.html">Our Stories</a> </li>
         <li class="nav-item"> <a class="nav-link" href="contact.html">Contact Us</a> </li>
       </ul>
     </div>
   </div>
-</nav>
+</nav> 
 <!-- End Navbar --> 
 
-<section class="slider">
+<section class="streamer-section">
     <!-- Start Single Slider -->
-    <div class="single-slider" style="background-image:url('images/banner-side-2.jpg');">
+    <div class="streamer" style="background-image:url('images/banner-side-2.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-6 slider-margin">
             <div class="text">
               <blockquote class="white">Welcome to the Africa Golf Foundation</blockquote>
               <h1 class="wow fadeInUp" data-wow-delay="0.1s">Donate to our Cause</h1>
-              <p class="white wow fadeInUp" data-wow-delay="0.2s">Beneficiaries receive top-notch training, participate in competitive tournaments, and enjoy mentorship from experienced golfers. Additionally, they benefit from scholarships, financial aid, and opportunities for personal development, all while being part of an initiative that values environmental stewardship and inclusivity.</p>
+              <p class="white wow fadeInUp" data-wow-delay="0.2s">Your support is crucial to the success of our programs and initiatives. By donating or partnering with us, you’re not just supporting the game of golf, but you’re also contributing to the development of young talent, community empowerment, and the future of sports in Africa. Learn how you can make a difference today.</p>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 slider-margin">
             <div class="heart wow fadeInUp" data-wow-delay="0.3s"><i class="fa-solid fa-hand-holding-dollar"></i></div>
           </div>
         </div>
@@ -109,14 +110,32 @@ maximum-scale=1.0, user-scalable=no" />
                     <label for="phone">Phone Number</label>
                     <input id="phone" type="tel" name="phone" class="form-input phone-input" required/>
                   </div>
-                  <div class="form-item" style="margin-top: 10px;">
+                
+                  <!-- New Donation Type Section with Radio Buttons -->
+                  <!-- Donation Type Section with Button-like Radio Buttons -->
+                  <label for="donation-type" style="margin-top: 20px;">Donation Type</label>
+
+                  <div class="donation-type">
+                    <label class="donation-option">
+                      <input type="radio" name="donation-type" value="monetary">
+                      <span class="option-label">Monetary Donation</span>
+                    </label>
+                    <label class="donation-option">
+                      <input type="radio" name="donation-type" value="equipment">
+                      <span class="option-label">Equipment Donation</span>
+                    </label>
+                  </div>
+
+                
+                  <!-- Monetary Donation Section -->
+                  <div id="monetary-donation" class="form-item" style="margin-top: 10px;">
                     <div class="row">
                       <div class="col">
-                          <label for="amount">Donation Amount </label>
-                          <input type="number" id="amount" name="amount" class="form-input w-100" placeholder="100.00" required>
+                        <label for="amount">Donation Amount</label>
+                        <input type="number" id="amount" name="amount" class="form-input w-100" placeholder="100.00" required>
                       </div>
                       <div class="col">
-                        <label for="currency">Currency </label>
+                        <label for="currency">Currency</label>
                         <select id="currency" name="currency" class="form-input w-100">
                           <option value="USD">$ USD</option>
                           <option value="EUR">€ EUR</option>
@@ -131,50 +150,88 @@ maximum-scale=1.0, user-scalable=no" />
                       </div>
                     </div>
                     <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="preset-amount" value="10"> $10.00
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="preset-amount" value="50"> $50.00
-                        </label>
-                        <label class="radio-option selected">
-                            <input type="radio" name="preset-amount" value="100" checked> $100.00
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="preset-amount" value="200"> $200.00
-                        </label>
+                      <label class="radio-option">
+                        <input type="radio" name="preset-amount" value="10"> $10.00
+                      </label>
+                      <label class="radio-option">
+                        <input type="radio" name="preset-amount" value="50"> $50.00
+                      </label>
+                      <label class="radio-option selected">
+                        <input type="radio" name="preset-amount" value="100" checked> $100.00
+                      </label>
+                      <label class="radio-option">
+                        <input type="radio" name="preset-amount" value="200"> $200.00
+                      </label>
                     </div>
                   </div>
+                
+                  <!-- Payment Methods Section -->
                   <div id="payment-methods">
-                      <div class="payment-method">
-                          <label for="card-number">Card number:</label>
-                          <input type="text" id="card-number" name="card-number" required>
-      
-                          <label for="expiry-date">Expires:</label>
-                          <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
-      
-                          <button type="button" class="remove-method">Remove</button>
-                      </div>
+                    <div class="payment-method">
+                      <label for="card-number">Card number:</label>
+                      <input type="text" id="card-number" name="card-number" required>
+                
+                      <label for="expiry-date">Expires:</label>
+                      <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+                
+                      <button type="button" class="remove-method">Remove</button>
+                      <button type="button" id="add-method">+ Add Payment Method</button>
+
+                    </div>
                   </div>
-      
-                  <button type="button" id="add-method">+ Add Payment Method</button>
-                  </form>
+                  <!-- Equipment Donation Section -->
+                  <div id="equipment-donation" style="display: none;">
+                    <div id="equipment-fields">
+                      <div class="equipment-group">
+                        <div class="row">
+                          <div class="col-lg-8">
+                            <label for="equipment-type-1">Equipment Type:</label>
+                            <input type="text" name="equipment-type[]" id="equipment-type-1" class="form-input" placeholder="e.g., Golf Clubs" required>
+                          </div>
+                          <div class="col-lg-4">
+                            <label for="equipment-quantity-1">Quantity:</label>
+                            <input type="number" name="equipment-quantity[]" id="equipment-quantity-1" class="form-input" placeholder="e.g., 5" required>
+                          </div>
+                        </div>
+
+                      </div>
+                      <button type="button" id="add-equipment">+ Add Another Equipment</button>
+                   </div>
+                   <div class="form-item">
+                    <label for="equipment-quantity-total">Total Quantity:</label>
+                    <input type="number" name="equipment-quantity-total" id="equipment-quantity-total" class="form-input" placeholder="0" readonly>
+                   </div>
+                  </div>
+                </form>
+                                
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-4">
               <div class="payment-info">
                 <h3>Donation Summary</h3>
-                <div class="payment-info-side">
-                  <label for="total">Amount:</label>
-                  <input type="number" id="total" class="price-input" placeholder="100" readonly>
-                  <label for="date">Date of Donation</label>
-                  <input type="text" id="date" class="date-input">
-                  <p>Total <span id="total-display">$100</span></p>
+                <!-- Monetary Donation Summary -->
+                <div id="monetary-donation-summary" >
+                  <div class="payment-info-side">
+                    <label for="total">Amount:</label>
+                    <input type="number" id="total" class="price-input" placeholder="100" readonly>
+                    <label for="date-monetary">Date of Donation</label>
+                    <input type="date" id="date" class="date-input">
+                    <p>Total <span id="total-display">$100</span></p>
+                  </div>
+                </div>
+                <!-- Equipment Donation Summary -->
+                <div>
+                  <div class="payment-info-side">
+                    <label for="total-equipment">Total Equipment Quantity:</label>
+                    <input type="number" id="equipment-quantity-total-1" class="price-input" placeholder="0" readonly>
+                    <label for="date-equipment">Date of Donation</label>
+                    <input type="date" id="date-2" class="date-input">
+                    <p>Total Equipment Quantity: <span id="equipment-quantity-total-2">0</span></p>
+                  </div>
+                </div>
+                <button class="submit-button">Continue to Payment</button>
               </div>
-                
-                  <button class="submit-button">Continue to Payment</button>
-              </div>
-            </div>
+            </div>            
           </div>
         </div>
       </div>
@@ -187,7 +244,7 @@ maximum-scale=1.0, user-scalable=no" />
 
 <!-----Contact End-----  -->
 
-<!-------footer End------->
+<!-------footer Start------->
 <section class="footer">
   <div class="row">
     <div class="col-lg-4">
@@ -210,10 +267,7 @@ maximum-scale=1.0, user-scalable=no" />
         </div>
         <div class="payment-item media"> <i class="fa fa-up-right-from-square media-left brown"></i>
           <p><a  href="donate.html">Donate/Partner</a></p>
-        </div>
-        <div class="payment-item media"> <i class="fa fa-up-right-from-square media-left  brown"></i>
-          <p><a  href="contact.html">Contact Us</a></p>
-        </div>        
+        </div>       
      </div>
     </div>
     <div class="col-md-4 get-in-touch">
@@ -234,6 +288,22 @@ maximum-scale=1.0, user-scalable=no" />
             <p>E-mail: <a href="mailto:abcdefg@gmail.com">you@gmail.com</a></p>
           </div>
         </div>
+        <h5>Follow us</h5>
+        <div class="footer-socials">
+          <div class="wow fadeInUp" data-wow-delay="0.1s">
+            <div class="media-right-margin"><a href="https://www.facebook.com/afg" target="_blank"><span class="fab fa-facebook-f orange bg-white footer-socials-icon"></span></a>
+            </div>
+          </div>
+          <div class="media wow fadeInUp" data-wow-delay="0.3s">
+            <div class="media-right-margin"><a href="https://www.twitter.com/afg" target="_blank" ><span class="fab fa-x-twitter brown bg-white footer-socials-icon" aria-hidden="true"></span></a></div>
+          </div>
+          <div class="media wow fadeInUp" data-wow-delay="0.5s">
+            <div class="media-right-margin"><a href="https://www.facebook.com/afg" target="_blank"><span class="fab fa-linkedin-in green bg-white footer-socials-icon" aria-hidden="true"></span></a></div>
+          </div>
+          <div class="media wow fadeInUp" data-wow-delay="0.7s">
+            <div class="media-right-margin"><a href="https://www.facebook.com/afg" target="_blank"><span class="fab fa-instagram orange bg-white footer-socials-icon" aria-hidden="true"></span></a></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -252,6 +322,7 @@ maximum-scale=1.0, user-scalable=no" />
   </div>
 </div>
 </footer>
+
 
 </div>
 
