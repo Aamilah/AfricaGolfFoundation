@@ -73,7 +73,7 @@ maximum-scale=1.0, user-scalable=no" />
     <!-- End Single Slider -->
 </section>
 
-<!-------payment Start------->
+<!-------Donate Start------->
 <section class="payment section-padding">
   <div class="container">
     <div class="row">
@@ -110,25 +110,20 @@ maximum-scale=1.0, user-scalable=no" />
                     <label for="phone">Phone Number</label>
                     <input id="phone" type="tel" name="phone" class="form-input phone-input" required/>
                   </div>
-                
-                  <!-- New Donation Type Section with Radio Buttons -->
                   <!-- Donation Type Section with Button-like Radio Buttons -->
                   <label for="donation-type" style="margin-top: 20px;">Donation Type</label>
-
                   <div class="donation-type">
                     <label class="donation-option">
-                      <input type="radio" name="donation-type" value="monetary">
+                      <input type="radio" name="donation-type" value="monetary" id="monetary-donation">
                       <span class="option-label">Monetary Donation</span>
                     </label>
                     <label class="donation-option">
-                      <input type="radio" name="donation-type" value="equipment">
+                      <input type="radio" name="donation-type" value="equipment" id="equipment-donation">
                       <span class="option-label">Equipment Donation</span>
                     </label>
                   </div>
-
-                
                   <!-- Monetary Donation Section -->
-                  <div id="monetary-donation" class="form-item" style="margin-top: 10px;">
+                  <div class="form-item" id="monetary-section" style="display: none; margin-top: 10px;">
                     <div class="row">
                       <div class="col">
                         <label for="amount">Donation Amount</label>
@@ -151,82 +146,53 @@ maximum-scale=1.0, user-scalable=no" />
                     </div>
                     <div class="radio-group">
                       <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="10"> $10.00
+                        <input type="radio" name="preset-amount" value="10.00"> $10.00
                       </label>
                       <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="50"> $50.00
-                      </label>
-                      <label class="radio-option selected">
-                        <input type="radio" name="preset-amount" value="100" checked> $100.00
+                        <input type="radio" name="preset-amount" value="50.00"> $50.00
                       </label>
                       <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="200"> $200.00
+                        <input type="radio" name="preset-amount" value="100.00"> $100.00
+                      </label>
+                      <label class="radio-option">
+                        <input type="radio" name="preset-amount" value="200.00"> $200.00
                       </label>
                     </div>
-                  </div>
-                
-                  <!-- Payment Methods Section -->
-                  <div id="payment-methods">
-                    <div class="payment-method">
+                    <div>
+                    <div id="payment-methods">
                       <label for="card-number">Card number:</label>
-                      <input type="text" id="card-number" name="card-number" required>
-                
-                      <label for="expiry-date">Expires:</label>
-                      <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
-                
-                      <button type="button" class="remove-method">Remove</button>
+                      <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+                      <div class="row">
+                        <div class="col">
+                          <label for="expiry-date">Expires:</label>
+                          <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+                        </div>
+                        <div class="col">
+                          <label for="cvv">Card Verification Value (CVV):</label>
+                          <input type="text" id="cvv" name="cvv" placeholder="0000" required>
+                        </div>
+                      </div>
                       <button type="button" id="add-method">+ Add Payment Method</button>
-
+                    </div>
                     </div>
                   </div>
-                  <!-- Equipment Donation Section -->
-                  <div id="equipment-donation" style="display: none;">
-                    <div id="equipment-fields">
-                      <div class="equipment-group">
-                        <div class="row">
-                          <div class="col-lg-8">
-                            <label for="equipment-type-1">Equipment Type:</label>
-                            <input type="text" name="equipment-type[]" id="equipment-type-1" class="form-input" placeholder="e.g., Golf Clubs" required>
-                          </div>
-                          <div class="col-lg-4">
-                            <label for="equipment-quantity-1">Quantity:</label>
-                            <input type="number" name="equipment-quantity[]" id="equipment-quantity-1" class="form-input" placeholder="e.g., 5" required>
-                          </div>
-                        </div>
-
-                      </div>
-                      <button type="button" id="add-equipment">+ Add Another Equipment</button>
-                   </div>
-                   <div class="form-item">
-                    <label for="equipment-quantity-total">Total Quantity:</label>
-                    <input type="number" name="equipment-quantity-total" id="equipment-quantity-total" class="form-input" placeholder="0" readonly>
-                   </div>
-                  </div>
+                  
                 </form>
-                                
               </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4">
-              <div class="payment-info">
+            <div class="col-sm-12 col-md-12 col-lg-4" id="monetary-donation-summary" style="  position: relative">
+              <div class="payment-info moving-div">
                 <h3>Donation Summary</h3>
                 <!-- Monetary Donation Summary -->
-                <div id="monetary-donation-summary" >
-                  <div class="payment-info-side">
-                    <label for="total">Amount:</label>
-                    <input type="number" id="total" class="price-input" placeholder="100" readonly>
-                    <label for="date-monetary">Date of Donation</label>
-                    <input type="date" id="date" class="date-input">
-                    <p>Total <span id="total-display">$100</span></p>
-                  </div>
-                </div>
-                <!-- Equipment Donation Summary -->
                 <div>
                   <div class="payment-info-side">
-                    <label for="total-equipment">Total Equipment Quantity:</label>
-                    <input type="number" id="equipment-quantity-total-1" class="price-input" placeholder="0" readonly>
-                    <label for="date-equipment">Date of Donation</label>
-                    <input type="date" id="date-2" class="date-input">
-                    <p>Total Equipment Quantity: <span id="equipment-quantity-total-2">0</span></p>
+                    <label for="date-monetary">Date of Donation</label>
+                    <input type="text" id="date" name="date" class="date-input">
+                    <label for="total">Amount:</label>
+                    <input type="number" id="total" class="price-input" placeholder="100" readonly>
+                    <div class="total">
+                      <p>Total <span id="total-display">$100</span></p>
+                    </div>
                   </div>
                 </div>
                 <button class="submit-button">Continue to Payment</button>
@@ -241,8 +207,138 @@ maximum-scale=1.0, user-scalable=no" />
     </div>
   </div>
 </section>
+<!-----Donate End-----  -->
 
-<!-----Contact End-----  -->
+<!-------payment Start------->
+<section class="payment section-padding lime-dark-bg" id="1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <svg class="payment-curved-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 80">
+          <!-- Inner purple curve -->
+          <path d="M 0 50 A 50 50 0 0 1 100 50" stroke="#ffa302" stroke-width="30" fill="none"/>
+        </svg>
+        <div class="sectioner-header text-center" style="margin-top: -225px;">
+          <h1>Make an Equipment Donation to the Africa Golf Foundation</h1>
+          <img src="images/section-img.png" alt="#">
+          <p>Join us in nurturing the next generation of African golfers. Help be the person that makes the difference in the lives of young athletes.</p>
+        </div>
+        <div class="section-content">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8">
+              <div class="payment-info wow bounce" data-wow-delay="0.2s">
+                <form id="equipment_form" action="">
+                  <div class="row">
+                    <div class="col">
+                      <label for="fname">First Name</label>
+                      <input type="text" id="f-name" class="form-input w-100" name="f-name" placeholder="Full Name" required>
+                    </div>
+                    <div class="col">
+                      <label for="lname">Last Name</label>
+                      <input type="text" id="l-name" class="form-input w-100" name="l-name" placeholder="Full Name" required>
+                    </div>
+                  </div>
+                  <div class="form-item">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-input w-100" name="email" placeholder="you@email.com" required>
+                  </div>
+                  <div class="form-item">
+                    <label for="phone">Phone Number</label>
+                    <input id="phone" type="tel" name="phone" class="form-input phone-input" required/>
+                  </div>
+                  <div class="form-item" style="margin-top: 20px;">
+                    <h4>Equipment Donation</h4>
+                  </div>                 
+                  <div id="equipment-details">
+                    <div class="form-item">
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <label for="equipment-name-1">Name of equipment</label>
+                          <input type="text" id="equipment-name-1" class="form-input w-100" name="equipment-name[]" placeholder="eg Golf Clubs" required>
+                        </div>
+                        <div class="col-lg-5">
+                          <label for="equipment-quantity-1">Quantity</label>
+                          <input type="number" id="equipment-quantity-1" name="equipment-quantity[]" class="form-input w-100" placeholder="e.g 5" required>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" id="add-equipment">+ Add Equipment</button>
+                  </div>
+                  <label for="delivery-type" style="margin-top: 20px;">Delivery Options</label>
+                  <div class="delivery-type">
+                    <label class="delivery-option">
+                      <input type="radio" name="delivery-type" value="pick-up" id="pick-up">
+                      <span class="option-label">Can you please pick up?</span>
+                    </label>
+                    <label class="delivery-option">
+                      <input type="radio" name="delivery-type" value="drop-off" id="drop-off">
+                      <span class="option-label">We will deliver.</span>
+                    </label>
+                  </div>
+                  <div id="pick-up-section" style="display: none;">
+                    <div class="form-item">
+                      <label for="pick-up-address">Pick-up Address</label>
+                      <input type="text" name="pick-up-address" id="pick-up-address" class="form-input w-100" placeholder="101 Street Name, City Name" required>
+                    </div>
+                    <div class="form-item">
+                      <label for="pick-up-time">Pick-up Time</label>
+                      <input type="time" name="pick-up-time" id="pick-up-time" class="form-input w-100" required >
+                    </div>
+                  </div>
+                  <div id="drop-off-section" style="display: none;">
+                    <div class="form-item">
+                      <label for="drop-off-address">Delivery Address</label>
+                      <input type="text" class="form-input w-100" placeholder="101 Street Name, City Name" readonly>
+                    </div>
+                    <div class="form-item">
+                      <label for="drop-off-time">Drop-off Time</label>
+                      <div class="radio-group">
+                        <label class="radio-option">
+                          <input type="radio" name="preset-drop-off" value="10"> 09:00
+                        </label>
+                        <label class="radio-option">
+                          <input type="radio" name="preset-drop-off" value="50"> 12:00
+                        </label>
+                        <label class="radio-option">
+                          <input type="radio" name="preset-drop-off" value="100"> 17:00
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" id="submit">Submit</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4" id="equipment-donation-summary" style="  position: relative">
+              <div class="payment-info moving-div">
+                <h3>Donation Summary</h3>
+                <!-- Monetary Donation Summary -->
+                <div>
+                  <div class="payment-info-side">
+                    <label for="date">Date of Donation</label>
+                    <input type="text" id="date" name="date" class="date-input">
+                    <label for="equipment-summary">Equipment Summary</label>
+                    <div class="equipment-summary">
+
+                    </div>
+                    <div class="total">
+                      <p>Total Quantity <span id="total-quantity">0</span></p>
+                    </div>
+                  </div>
+                </div>
+                <button class="submit-button orange-bg">Submit Application</button>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="donate-end">
+      <img src="images/golf.png"/>
+    </div>
+  </div>
+</section>
+<!-----Donate End-----  -->
 
 <!-------footer Start------->
 <section class="footer">

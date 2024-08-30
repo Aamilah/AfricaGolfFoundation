@@ -37,7 +37,7 @@ $(window).on("scroll",function () {
     var bodyScroll = $(window).scrollTop(),
     navbar = $(".navbar");
     if(bodyScroll > 50){
-        $('.navbar-logo img').attr('src','images/logo-small.jpg');
+        $('.navbar-logo img').attr('src','images/logo-small-bg.png');
         navbar.addClass("nav-scroll");
     }else{
         $('.navbar-logo img').attr('src','images/logo-small-bg.png');
@@ -48,10 +48,10 @@ $(window).on("load",function (){
     var bodyScroll = $(window).scrollTop(),
     navbar = $(".navbar");
     if(bodyScroll > 50){
-        $('.navbar-logo img').attr('src','images/logo2.png');
+        $('.navbar-logo img').attr('src','images/logo-small-bg.png');
         navbar.addClass("nav-scroll");
     }else{
-        $('.navbar-logo img').attr('src','images/logo1.jpg');
+        $('.navbar-logo img').attr('src','images/logo-small-bg.png');
         navbar.removeClass("nav-scroll");
     }
     $.scrollIt({
@@ -65,16 +65,20 @@ $(window).on("load",function (){
 // navbar animation end
 
 // Carousel Start
-$(".hero-slider").owlCarousel({
-		loop:true,
-		autoplay:true,
-		smartSpeed: 500,
-		autoplayTimeout:3500,
-		singleItem: true,
-		autoplayHoverPause:true,
-		items:1,
-		nav:true,
-		dots:false,
+    // Header carousel
+    $(".hero-slider").owlCarousel({
+        autoplay: true,
+        animateOut: 'fadeOutLeft',
+        smartSpeed: 1000,           // Smooth transition speed
+        items: 1,
+        dots: true,
+        loop: true,
+        nav : true,
+        freeDrag: false,             // Ensure smooth transitions without free dragging
+        navText : [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ]
     });
 
 $('.article-slider').owlCarousel({
@@ -193,176 +197,276 @@ closeBtns.forEach(btn => {
     });
 });
 // Modal End
+  // JavaScript to redirect when "Equipment Donation" is selected
+  document.getElementById('equipment-donation').addEventListener('change', function() {
+    if (this.checked) {
+      window.location.href = 'donate.html#1';
+      document.getElementById('monetary-section').style.display = 'block';
+    }
+  });
+  // JavaScript to handle donation type selection
+  document.getElementById('monetary-donation').addEventListener('change', function() {
+    if (this.checked) {
+      document.getElementById('monetary-section').style.display = 'block'; // Show monetary section
+    }
+  });
+    // JavaScript to update donation amount based on preset selection
+    document.addEventListener("DOMContentLoaded", function() {
+        var amountInput = document.getElementById("amount");
+        var totalInput = document.getElementById("total");
+        var totalDisplay = document.getElementById("total-display");
+        var radioButtons = document.querySelectorAll("input[name='preset-amount']");
+        var radioOptions = document.querySelectorAll(".radio-option");
 
-
-// Payment Section Add Card Start
-document.getElementById('add-method').addEventListener('click', function() {
-    const paymentMethods = document.getElementById('payment-methods');
-    const newMethod = document.createElement('div');
-    newMethod.classList.add('payment-method');
-    newMethod.innerHTML = `
-        <label for="card-number">Card number:</label>
-        <input type="text" name="card-number" required>
-
-        <label for="expiry-date">Expires:</label>
-        <input type="text" name="expiry-date" placeholder="MM/YYYY" required>
-
-        <button type="button" class="remove-method">Remove</button>
-    `;
-    paymentMethods.appendChild(newMethod);
-
-    newMethod.querySelector('.remove-method').addEventListener('click', function() {
-        paymentMethods.removeChild(newMethod);
-    });
-});
-
-document.querySelectorAll('.remove-method').forEach(button => {
-    button.addEventListener('click', function() {
-        button.parentElement.remove();
-    });
-});
-// Payment Section Add Card End
-
-// International Phone Num Input section start
-const phoneInputField = document.querySelector("#phone");
-const phoneInput = window.intlTelInput(phoneInputField, {
-  utilsScript:
-	"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-});
-// International Phone Num Input section End
-
-document.addEventListener('DOMContentLoaded', function() {
-    const donationTypeRadios = document.querySelectorAll('input[name="donation-type"]');
-    const monetaryDonationSection = document.getElementById('monetary-donation');
-    const equipmentDonationSection = document.getElementById('equipment-donation');
-    const paymentMethodsSection = document.getElementById('payment-methods');
-  
-    // Initially hide all donation-specific sections
-    monetaryDonationSection.style.display = 'none';
-    equipmentDonationSection.style.display = 'none';
-    paymentMethodsSection.style.display = 'none';
-  
-    // Function to show or hide sections based on the selected donation type
-    function updateDonationSections() {
-      const selectedDonationType = document.querySelector('input[name="donation-type"]:checked');
-      if (selectedDonationType) {
-        if (selectedDonationType.value === 'monetary') {
-          monetaryDonationSection.style.display = 'block';
-          paymentMethodsSection.style.display = 'block';
-          equipmentDonationSection.style.display = 'none';
-        } else if (selectedDonationType.value === 'equipment') {
-          equipmentDonationSection.style.display = 'block';
-          monetaryDonationSection.style.display = 'none';
-          paymentMethodsSection.style.display = 'none';
+        // Function to update the total amount and display
+        function updateTotalAmount() {
+            var amount = amountInput.value;
+            totalInput.value = amount;
+            totalDisplay.textContent = `$${amount}`;
         }
-      }
-    }
-  
-    // Add event listener to update sections when the donation type changes
-    donationTypeRadios.forEach(radio => {
-        radio.addEventListener('change', updateDonationSections);
+
+        // Update total when amount input changes manually
+        amountInput.addEventListener("input", updateTotalAmount);
+
+        // Update total when preset amount is selected
+        radioButtons.forEach(function(radio, index) {
+            radio.addEventListener("change", function() {
+                if (this.checked) {
+                    amountInput.value = this.value;
+                    updateTotalAmount(); // Automatically update total
+                    radioOptions.forEach(function(option) {
+                        option.classList.remove("selected");
+                    });
+                    radioOptions[index].classList.add("selected");
+                }
+            });
+        });
+
+        // Initialize the total amount on page load
+        updateTotalAmount();
     });
-});
-  
+    // Payment Section Add Card Start
+    document.getElementById('add-method').addEventListener('click', function() {
+        const paymentMethods = document.getElementById('payment-methods');
+        const newMethod = document.createElement('div');
+        newMethod.classList.add('payment-method');
+        newMethod.innerHTML = `
+            <label for="card-number" style="margin-top:20px;">Card number:</label>
+            <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+            <div class="row">
+                <div class="col">
+                    <label for="expiry-date">Expires:</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+                </div>
+                <div class="col">
+                    <label for="cvv">Card Verification Value (CVV):</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="0000" required>
+                </div>
+            </div>
 
-// Function to update the total quantity of equipment
-function updateTotalEquipmentQuantity() {
-    let totalQuantity = 0;
+            <button type="button" class="remove-method">Remove</button>
+        `;
+        paymentMethods.appendChild(newMethod);
 
-    // Select all equipment quantity input fields and calculate the total
-    document.querySelectorAll('input[name="equipment-quantity[]"]').forEach(input => {
-        totalQuantity += parseInt(input.value) || 0; // Ensure NaN is handled by defaulting to 0
-    });
-
-    // Update the total quantity display
-    document.getElementById('equipment-quantity-total').value = totalQuantity;
-    document.getElementById('equipment-quantity-total-1').value = totalQuantity;
-    document.getElementById('equipment-quantity-total-2') = totalQuantity;
-}
-
-// Event listener to add new equipment fields dynamically
-document.getElementById('add-equipment').addEventListener('click', function() {
-    const equipmentFields = document.getElementById('equipment-fields');
-    const newEquipmentGroup = document.createElement('div');
-    newEquipmentGroup.classList.add('equipment-group');
-    newEquipmentGroup.innerHTML = `
-        <label for="equipment-type">Type:</label>
-        <input type="text" name="equipment-type[]" class="form-input" placeholder="e.g., Golf Clubs">
-        
-        <label for="equipment-quantity">Quantity:</label>
-        <input type="number" name="equipment-quantity[]" class="form-input equipment-quantity" placeholder="e.g., 5">
-
-        <button type="button" class="remove-equipment">Remove</button>
-    `;
-    
-    equipmentFields.appendChild(newEquipmentGroup);
-
-    // Attach event listener to new quantity input to update total quantity
-    newEquipmentGroup.querySelector('input[name="equipment-quantity[]"]').addEventListener('input', updateTotalEquipmentQuantity);
-
-    // Attach event listener to the remove button to handle dynamic deletion
-    newEquipmentGroup.querySelector('.remove-equipment').addEventListener('click', function() {
-        newEquipmentGroup.remove();
-        updateTotalEquipmentQuantity();  // Update total quantity after removal
-    });
-});
-
-// Attach event listeners to all initial equipment quantity inputs to update total quantity
-document.querySelectorAll('input[name="equipment-quantity[]"]').forEach(input => {
-    input.addEventListener('input', updateTotalEquipmentQuantity);
-});
-
-// Initial call to set the total quantity based on the default state of the form
-updateTotalEquipmentQuantity();
-
- 
-// Automatic total and Radio buttons (Payment Section)
-document.addEventListener("DOMContentLoaded", function() {
-    var amountInput = document.getElementById("amount");
-    var totalInput = document.getElementById("total");
-    var totalDisplay = document.getElementById("total-display");
-    var radioButtons = document.querySelectorAll("input[name='preset-amount']");
-    var radioOptions = document.querySelectorAll(".radio-option");
-
-    // Function to update the total amount and display
-    function updateTotalAmount() {
-        var amount = amountInput.value;
-        totalInput.value = amount;
-        totalDisplay.textContent = `$${amount}`;
-    }
-
-    // Update total when amount input changes manually
-    amountInput.addEventListener("input", updateTotalAmount);
-
-    // Update total when preset amount is selected
-    radioButtons.forEach(function(radio, index) {
-        radio.addEventListener("change", function() {
-            if (this.checked) {
-                amountInput.value = this.value;
-                updateTotalAmount(); // Automatically update total
-                radioOptions.forEach(function(option) {
-                    option.classList.remove("selected");
-                });
-                radioOptions[index].classList.add("selected");
-            }
+        newMethod.querySelector('.remove-method').addEventListener('click', function() {
+            paymentMethods.removeChild(newMethod);
         });
     });
 
-    // Initialize the total amount on page load
-    updateTotalAmount();
-});
+    document.querySelectorAll('.remove-method').forEach(button => {
+        button.addEventListener('click', function() {
+            button.parentElement.remove();
+        });
+    });
+      // JavaScript to handle donation type selection
+    document.getElementById('pick-up').addEventListener('change', function() {
+        if (this.checked) {
+        document.getElementById('pick-up-section').style.display = 'block';
+        document.getElementById('drop-off-section').style.display = 'none'; // Show pick-up section
+        }
+    });
+    document.getElementById('drop-off').addEventListener('change', function() {
+        if (this.checked) {
+        document.getElementById('drop-off-section').style.display = 'block'; 
+        document.getElementById('pick-up-section').style.display = 'none';
+        // Show drop-off section
+        } 
+    });
+    // JavaScript to ensure card number follows Mastercard format and auto-separates into 4-digit groups
+    document.getElementById('card-number').addEventListener('input', function(e) {
+        let cardNumber = this.value.replace(/\s+/g, ''); // Remove any spaces
 
-// Get the current date
-const today = new Date();
-const day = String(today.getDate()).padStart(2, '0');
-const month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-const year = today.getFullYear();
+        // Check if the input is following the Mastercard pattern
+        const mastercardRegex = /^(5[1-5]|2[2-7][0-9]{2})[0-9]{12}$/; // Regex for Mastercard
 
-// Format the date as DD/MM/YYYY
-const currentDate = `${day}/${month}/${year}`;
+        // Validate the card number for Mastercard
+        if (cardNumber.length > 16) {
+        cardNumber = cardNumber.substring(0, 16); // Limit input to 16 digits
+        }
 
-// Set the value of the date input field
-document.getElementById('date').value = currentDate;
+        // Automatically format into 4-digit groups
+        const formattedCardNumber = cardNumber.match(/.{1,4}/g)?.join(' ') || ''; // Separate by 4 digits
+        this.value = formattedCardNumber;
+
+        // Validate Mastercard number format
+        const isValidMastercard = mastercardRegex.test(cardNumber);
+        if (!isValidMastercard && cardNumber.length === 16) {
+        this.setCustomValidity("Please enter a valid Mastercard number."); // Set custom validity message
+        } else {
+        this.setCustomValidity(""); // Reset custom validity
+        }
+    });
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        const equipmentDetailsContainer = document.getElementById('equipment-details');
+        const equipmentSummary = document.querySelector('#equipment-donation-summary .equipment-summary');
+        const addEquipmentButton = document.getElementById('add-equipment');
+        
+        // Function to update equipment summary
+        function updateEquipmentSummary() {
+          const summaryHtml = [];
+          const equipmentItems = document.querySelectorAll('#equipment-details .form-item');
+          
+          equipmentItems.forEach((item) => {
+            const nameInput = item.querySelector('input[name="equipment-name[]"]');
+            const quantityInput = item.querySelector('input[name="equipment-quantity[]"]');
+            const name = nameInput ? nameInput.value : '';
+            const quantity = quantityInput ? quantityInput.value : '';
+            
+            if (name && quantity) {
+              summaryHtml.push(`<p>${name} <span>${quantity}</span></p>`);
+            }
+          });
+          
+          equipmentSummary.innerHTML = summaryHtml.join('');
+        }
+      
+        // Function to add a new equipment details section
+        function addEquipment() {
+          const existingSections = equipmentDetailsContainer.querySelectorAll('.form-item').length;
+      
+          const newEquipment = document.createElement('div');
+          newEquipment.className = 'form-item';
+          newEquipment.innerHTML = `
+            <div class="row">
+              <div class="col-lg-7">
+                <label for="equipment-name-${existingSections + 2}">Name of equipment</label>
+                <input type="text" id="equipment-name-${existingSections + 2}" class="form-input w-100" name="equipment-name[]" placeholder="eg Golf Clubs" required>
+              </div>
+              <div class="col-lg-5">
+                <label for="equipment-quantity-${existingSections + 2}">Quantity</label>
+                <input type="number" id="equipment-quantity-${existingSections + 2}" name="equipment-quantity[]" class="form-input w-100" placeholder="e.g 5" required>
+              </div>
+            </div>
+            <button type="button" class="remove-equipment red-bg">Remove</button>
+          `;
+      
+          equipmentDetailsContainer.insertBefore(newEquipment, addEquipmentButton);
+        }
+      
+        // Function to remove an equipment details section
+        function removeEquipment(event) {
+          if (event.target.classList.contains('remove-equipment')) {
+            const sectionToRemove = event.target.closest('.form-item');
+            if (sectionToRemove) {
+              sectionToRemove.remove();
+              updateEquipmentSummary(); // Update summary when an item is removed
+            }
+          }
+        }
+      
+        // Event listener for adding equipment
+        addEquipmentButton.addEventListener('click', function() {
+          addEquipment();
+          updateEquipmentSummary(); // Update summary when an item is added
+        });
+      
+        // Event listener for removing equipment
+        equipmentDetailsContainer.addEventListener('click', removeEquipment);
+      
+        // Initial update of equipment summary
+        updateEquipmentSummary();
+      });
+      
+
+      // Function to update the equipment summary and total quantity
+function updateEquipmentSummary() {
+    const summaryContainer = document.querySelector('#equipment-donation-summary .equipment-summary');
+    const equipmentNames = document.querySelectorAll('[name="equipment-name[]"]');
+    const equipmentQuantities = document.querySelectorAll('[name="equipment-quantity[]"]');
+    
+    let totalQuantity = 0;
+    let summaryHTML = '';
+  
+    equipmentNames.forEach((nameField, index) => {
+      const name = nameField.value;
+      const quantity = parseInt(equipmentQuantities[index].value, 10) || 0;
+      
+      if (name && quantity > 0) {
+        summaryHTML += `<p>${name} <span>${quantity}</span></p>`;
+        totalQuantity += quantity;
+      }
+    });
+  
+    summaryContainer.innerHTML = summaryHTML;
+    
+    // Update total quantity display
+    document.getElementById('total-quantity').textContent = totalQuantity;
+  }
+  
+  // Event listener for adding and removing equipment
+  document.getElementById('add-equipment').addEventListener('click', () => {
+    updateEquipmentSummary();
+  });
+  
+  // Event listener for equipment input changes
+  document.addEventListener('input', (event) => {
+    if (event.target.matches('[name="equipment-name[]"], [name="equipment-quantity[]"]')) {
+      updateEquipmentSummary();
+    }
+  });
+  
+  // Initialize the summary on page load
+  updateEquipmentSummary();
+  
+// International Phone Num Input section start
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all phone input fields with the name 'phone'
+    const phoneInputFields = document.querySelectorAll("input[name='phone']");
+  
+    phoneInputFields.forEach(function(phoneInputField) {
+      window.intlTelInput(phoneInputField, {
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      });
+    });
+  });
+  // International Phone Num Input section end
+  
+
+
+  
+// Function to get the current date formatted as DD/MM/YYYY
+function getCurrentDateFormatted() {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const year = today.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+  
+  // Function to set the current date to all input fields with the name 'date'
+  function setDateInputs() {
+    const dateInputs = document.querySelectorAll("input[name='date']");
+    const currentDate = getCurrentDateFormatted();
+    
+    dateInputs.forEach(function(dateInput) {
+      dateInput.value = currentDate;
+    });
+  }
+  
+  // Set the date on page load
+  document.addEventListener('DOMContentLoaded', setDateInputs);
+  
 
 
 

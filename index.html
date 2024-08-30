@@ -51,10 +51,10 @@ maximum-scale=1.0, user-scalable=no" />
 </nav>
 <!-- End Navbar --> 
 <!-- Slider Area -->
-<section class="slider">
-  <div class="hero-slider">
+<section class="slider hero-slider">
+
     <!-- Start Single Slider -->
-    <div class="single-slider" style="background-image:url('images/banner-1.jpg');">
+    <div class="single-slider lime-dark-bg" style="background-image:url('images/banner-1.jpg');">
       <!-- Overlay to add a darkened effect -->
       <div class="overlay"></div>
       <div class="container">
@@ -94,7 +94,7 @@ maximum-scale=1.0, user-scalable=no" />
     </div>
     <!-- End Single Slider -->
     <!-- Start Single Slider -->
-    <div class="single-slider" style="background-image:url('images/banner-2.jpg')">
+    <div class="single-slider lime-dark-bg" style="background-image:url('images/banner-2.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -128,7 +128,7 @@ maximum-scale=1.0, user-scalable=no" />
     </div>
     <!-- Start End Slider -->
     <!-- Start Single Slider -->
-    <div class="single-slider" style="background-image:url('images/banner-3.jpg')">
+    <div class="single-slider lime-dark-bg" style="background-image:url('images/banner-3.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -161,7 +161,6 @@ maximum-scale=1.0, user-scalable=no" />
       </div>
     </div>
     <!-- End Single Slider -->
-  </div>
 </section>
 
 <!-------About End------->
@@ -355,7 +354,7 @@ maximum-scale=1.0, user-scalable=no" />
   </div>
 </section>
 
-<!-------payment Start------->
+<!-------donate Start------->
 <section class="payment section-padding">
   <div class="container">
     <div class="row">
@@ -392,25 +391,20 @@ maximum-scale=1.0, user-scalable=no" />
                     <label for="phone">Phone Number</label>
                     <input id="phone" type="tel" name="phone" class="form-input phone-input" required/>
                   </div>
-                
-                  <!-- New Donation Type Section with Radio Buttons -->
                   <!-- Donation Type Section with Button-like Radio Buttons -->
                   <label for="donation-type" style="margin-top: 20px;">Donation Type</label>
-
                   <div class="donation-type">
                     <label class="donation-option">
-                      <input type="radio" name="donation-type" value="monetary">
+                      <input type="radio" name="donation-type" value="monetary" id="monetary-donation">
                       <span class="option-label">Monetary Donation</span>
                     </label>
                     <label class="donation-option">
-                      <input type="radio" name="donation-type" value="equipment">
+                      <input type="radio" name="donation-type" value="equipment" id="equipment-donation">
                       <span class="option-label">Equipment Donation</span>
                     </label>
                   </div>
-
-                
                   <!-- Monetary Donation Section -->
-                  <div id="monetary-donation" class="form-item" style="margin-top: 10px;">
+                  <div class="form-item" id="monetary-section" style="display: none; margin-top: 10px;">
                     <div class="row">
                       <div class="col">
                         <label for="amount">Donation Amount</label>
@@ -433,82 +427,53 @@ maximum-scale=1.0, user-scalable=no" />
                     </div>
                     <div class="radio-group">
                       <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="10"> $10.00
+                        <input type="radio" name="preset-amount" value="10.00"> $10.00
                       </label>
                       <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="50"> $50.00
-                      </label>
-                      <label class="radio-option selected">
-                        <input type="radio" name="preset-amount" value="100" checked> $100.00
+                        <input type="radio" name="preset-amount" value="50.00"> $50.00
                       </label>
                       <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="200"> $200.00
+                        <input type="radio" name="preset-amount" value="100.00"> $100.00
+                      </label>
+                      <label class="radio-option">
+                        <input type="radio" name="preset-amount" value="200.00"> $200.00
                       </label>
                     </div>
-                  </div>
-                
-                  <!-- Payment Methods Section -->
-                  <div id="payment-methods">
-                    <div class="payment-method">
+                    <div>
+                    <div id="payment-methods">
                       <label for="card-number">Card number:</label>
-                      <input type="text" id="card-number" name="card-number" required>
-                
-                      <label for="expiry-date">Expires:</label>
-                      <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
-                
-                      <button type="button" class="remove-method">Remove</button>
+                      <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+                      <div class="row">
+                        <div class="col">
+                          <label for="expiry-date">Expires:</label>
+                          <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+                        </div>
+                        <div class="col">
+                          <label for="cvv">Card Verification Value (CVV):</label>
+                          <input type="text" id="cvv" name="cvv" placeholder="0000" required>
+                        </div>
+                      </div>
                       <button type="button" id="add-method">+ Add Payment Method</button>
-
+                    </div>
                     </div>
                   </div>
-                  <!-- Equipment Donation Section -->
-                  <div id="equipment-donation" style="display: none;">
-                    <div id="equipment-fields">
-                      <div class="equipment-group">
-                        <div class="row">
-                          <div class="col-lg-8">
-                            <label for="equipment-type-1">Equipment Type:</label>
-                            <input type="text" name="equipment-type[]" id="equipment-type-1" class="form-input" placeholder="e.g., Golf Clubs" required>
-                          </div>
-                          <div class="col-lg-4">
-                            <label for="equipment-quantity-1">Quantity:</label>
-                            <input type="number" name="equipment-quantity[]" id="equipment-quantity-1" class="form-input" placeholder="e.g., 5" required>
-                          </div>
-                        </div>
-
-                      </div>
-                      <button type="button" id="add-equipment">+ Add Another Equipment</button>
-                   </div>
-                   <div class="form-item">
-                    <label for="equipment-quantity-total">Total Quantity:</label>
-                    <input type="number" name="equipment-quantity-total" id="equipment-quantity-total" class="form-input" placeholder="0" readonly>
-                   </div>
-                  </div>
+                  
                 </form>
-                                
               </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4">
-              <div class="payment-info">
+            <div class="col-sm-12 col-md-12 col-lg-4" id="monetary-donation-summary" style="  position: relative">
+              <div class="payment-info moving-div">
                 <h3>Donation Summary</h3>
                 <!-- Monetary Donation Summary -->
-                <div id="monetary-donation-summary" >
-                  <div class="payment-info-side">
-                    <label for="total">Amount:</label>
-                    <input type="number" id="total" class="price-input" placeholder="100" readonly>
-                    <label for="date-monetary">Date of Donation</label>
-                    <input type="date" id="date" class="date-input">
-                    <p>Total <span id="total-display">$100</span></p>
-                  </div>
-                </div>
-                <!-- Equipment Donation Summary -->
                 <div>
                   <div class="payment-info-side">
-                    <label for="total-equipment">Total Equipment Quantity:</label>
-                    <input type="number" id="equipment-quantity-total-1" class="price-input" placeholder="0" readonly>
-                    <label for="date-equipment">Date of Donation</label>
-                    <input type="date" id="date-2" class="date-input">
-                    <p>Total Equipment Quantity: <span id="equipment-quantity-total-2">0</span></p>
+                    <label for="date-monetary">Date of Donation</label>
+                    <input type="date" id="date" name="date" class="date-input">
+                    <label for="total">Amount:</label>
+                    <input type="number" id="total" class="price-input" placeholder="100" readonly>
+                    <div class="total">
+                      <p>Total <span id="total-display">$100</span></p>
+                    </div>
                   </div>
                 </div>
                 <button class="submit-button">Continue to Payment</button>
@@ -523,6 +488,7 @@ maximum-scale=1.0, user-scalable=no" />
     </div>
   </div>
 </section>
+<!-----Donate End-----  -->
 
 <!-------footer Start------->
 <section class="footer">
