@@ -200,8 +200,8 @@ closeBtns.forEach(btn => {
   // JavaScript to redirect when "Equipment Donation" is selected
   document.getElementById('equipment-donation').addEventListener('change', function() {
     if (this.checked) {
-      window.location.href = 'donate.html#1';
-      document.getElementById('monetary-section').style.display = 'block';
+      window.location.href = 'donate.html#2';
+      document.getElementById('monetary-section').style.display = 'none';
     }
   });
   // JavaScript to handle donation type selection
@@ -467,6 +467,23 @@ function getCurrentDateFormatted() {
   // Set the date on page load
   document.addEventListener('DOMContentLoaded', setDateInputs);
   
+
+  function toggleReadMore(contentId, button) {
+    var moreText = document.getElementById(contentId);
+    var icon = button.querySelector('i');
+
+    if (moreText.style.display === "none" || moreText.style.display === "") {
+        moreText.style.display = "inline"; // Show the hidden content
+        button.textContent = "Read Less";  // Change button text
+        button.prepend(icon); // Re-add icon to button
+        icon.classList.replace("fa-plus", "fa-minus"); // Change icon to minus
+    } else {
+        moreText.style.display = "none";  // Hide the content again
+        button.textContent = "Read More"; // Revert button text
+        button.prepend(icon); // Re-add icon to button
+        icon.classList.replace("fa-minus", "fa-plus"); // Change icon to plus
+    }
+}
 
 
 

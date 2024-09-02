@@ -261,7 +261,7 @@ pre {
     margin-top: 160px;
 }
 .streamer .text{
-	margin-top: 160px;
+	margin-top: 100px;
 	
 }
 
@@ -686,7 +686,7 @@ pre {
 	margin-left: -75px;
 }
 .sectioner-header p {
-	color:#818992;
+	color:#5a5e63;
 	font-size: 17px;
 }
 .section-content {
@@ -1015,6 +1015,9 @@ pre {
 	font-weight: 700;
 	padding-top: 20px;
 	float: left;
+}
+.news-item h5{
+	font-weight: 700;
 }
 /******* Middle section CSS Start ******/
 /* -------- Landing page ------- */
@@ -1535,7 +1538,9 @@ pre {
 .employ-item:hover .btn {
     width: 140px;
 }
-
+.more-content {
+	display: none; /* Initially hide the content */
+}
 
 /*** Feature ***/
 @media (min-width: 992px) {
@@ -2489,10 +2494,18 @@ h3 {
 	.news{
 		margin-top: 300px;
 	}
-	
+	.news-most-recent{
+		margin-top: -300px;
+	}
+	.news-item{
+		margin-left: -10px;
+	}
+	.news-item .img-box img{
+		width: 260px;
+	}
 	.img-box img{
 		width: 310px;
-		height: 240px;
+		height: 220px;
 	}
 	.news-box-1{
 		width: 92%;
@@ -2500,6 +2513,9 @@ h3 {
 	}
 	.news-box-1 .text-news-box-1 {
 		padding: 30px;
+	}
+	.news-template{
+		padding-top: 70px;
 	}
 	.partners-section{
 		margin-top: 10px;
