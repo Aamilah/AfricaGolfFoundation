@@ -1092,7 +1092,10 @@ pre {
   z-index: 5;
 }
 /******** Middle section CSS End *******/
-
+.button-partnership{
+	margin-top: 30px;
+	margin-left: 390px;
+}
 /***** responsive css Start ******/
 
 @media (min-width: 992px) and (max-width: 1199px) {
