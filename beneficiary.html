@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale = 1.0, 
 maximum-scale=1.0, user-scalable=no" /> 
 <title>Africa Golf Foundation | Become a Beneficiary</title>
+<meta name="description" content="Meet the beneficiaries of the Africa Golf Foundation. Learn how young golfers and communities across Africa are thriving through our programs, mentorship, and support."/>
 <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
@@ -191,36 +192,62 @@ maximum-scale=1.0, user-scalable=no" />
             </div>
           </div>
         </div>
-        <div class="col-sm-12">
-          <div class="beneficiary-form">
-            <form id="beneficiary-form" action="">
-              <div class="row">
-                <div class="col">
-                  <label for="f-name">First Name</label>
-                  <input type="text" id="f-name" class="form-input w-100" name="f-name" placeholder="First Name" required>
-                </div>
-                <div class="col">
-                  <label for="l-name">Last Name</label>
-                  <input type="text" id="l-name" class="form-input w-100" name="l-name" placeholder="Last Name" required>
-                </div>
-              </div>
-              <div class="form-item">
-                <label for="email">Email</label>
-                <input type="email" id="email" class="form-input w-100" name="email" placeholder="Email" required>
-              </div>
-              <div class="form-item">
-                <label for="phone">Phone Number</label>
-                <input id="phone" type="tel" name="phone" class="form-input w-100" placeholder="Phone Number" required/>
-              </div>
-              <textarea class="form-input w-100" id="message" placeholder="Message" name="message"></textarea>
-              <button class="btn-grad w-100" type="submit" name="button">Send Request</button>
-            </form>
+        <div class="col-md-12">
+          <div class="col-md-11">
+            <div class="beneficiary_form">
+              <form id="beneficiary_form" action="submit_form.php" method="POST">
+                  <div class="row">
+                      <div class="col">
+                          <label for="f_name">First Name</label>
+                          <input type="text" id="f_name" class="form-input w-100" name="f_name" placeholder="First Name" required>
+                      </div>
+                      <div class="col">
+                          <label for="l_name">Last Name</label>
+                          <input type="text" id="l_name" class="form-input w-100" name="l_name" placeholder="Last Name" required>
+                      </div>
+                  </div>
+                  <div class="form-item">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" class="form-input w-100" name="email" placeholder="Email" required>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-4">
+                          <div class="form-item">
+                              <label for="phone">Phone Number</label>
+                              <input id="phone" type="tel" name="phone" class="form-input phone-input" required/>
+                          </div>
+                      </div>
+                      <div class="col-lg-8">
+                          <div class="form-item">
+                              <label for="profession">Profession</label>
+                              <input id="profession" type="text" name="profession" class="form-input w-100" placeholder="e.g., Golfer" required/>
+                          </div>
+                      </div>
+                  </div> 
+                  <label for="message">Message</label>
+                  <textarea class="form-input w-100" id="message" placeholder="Message" name="message"></textarea>
+                  <button class="btn-grad w-100" type="submit" name="beneficiary_form">Send Request</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
+  <!-- Loading Popup -->
+  <div id="loadingPopup" class="overlay-popup" style="display: none;">
+    <div class="popup">
+        <p>Loading, please wait...</p>
+        <div class="loader-popup"></div>
+    </div>
+  </div>
+  <!-- Overlay HTML -->
+  <div id="overlay-popup" class="overlay-popup"></div>
+  <!-- Pop-up HTML -->
+  <div id="popup" class="popup">
+    <p id="popup-message"></p>
+    <button onclick="redirectToBeneficiary()">Thank You</button>
+  </div> 
 <!-------event Start-------
 <section class="beneficiary section-padding lime-dark-bg">
   <div class="container">
@@ -372,6 +399,46 @@ maximum-scale=1.0, user-scalable=no" />
 <script src="js/wow.min.js"></script> 
 		<!-- Owl Carousel JS -->
 <script src="js/owl-carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <script src="js/main.js"></script>
+<script>
+  document.getElementById('beneficiary_form').addEventListener('submit', function(event) {
+      // Show the loading popup
+      document.getElementById('loadingPopup').style.display = 'block';
+  });
+  // Function to display pop-up message and show overlay
+  function showPopup(message) {
+      var popup = document.getElementById('popup');
+      var popupMessage = document.getElementById('popup-message');
+      var overlay = document.getElementById('overlay-popup');
+
+      popupMessage.innerText = message;
+      popup.classList.add('active');
+      overlay.classList.add('active');  // Show the overlay
+  }
+
+  // Function to hide pop-up and overlay and redirect to the contact page
+  function redirectToBeneficiary() {
+      var popup = document.getElementById('popup');
+      var overlay = document.getElementById('overlay-popup');
+
+      popup.classList.remove('active');
+      overlay.classList.remove('active');  // Hide the overlay
+      window.location.href = 'beneficiary.html'; // Redirect to contact.html page
+  }
+
+  // Check the URL for query parameters
+  window.onload = function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('status')) {
+          var status = urlParams.get('status');
+          if (status === 'success') {
+              showPopup('Your email has been sent successfully. Thank you for getting in touch. A reply will be sent shortly.');
+          } else if (status === 'error') {
+              showPopup('There was an error submitting your email. Please try again or send us a direct email.');
+          }
+      }
+  };
+</script>
 </body>
 </html>

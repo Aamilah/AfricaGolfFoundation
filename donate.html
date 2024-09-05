@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale = 1.0, 
 maximum-scale=1.0, user-scalable=no" /> 
 <title>Africa Golf Foundation | Donate</title>
+<meta name="description" content="Support the Africa Golf Foundation by donating or partnering with us. Contribute to empowering young golfers and expanding the reach of golf across Africa, bringing the sport to underserved regions"/>
 <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
@@ -138,7 +139,7 @@ maximum-scale=1.0, user-scalable=no" />
             stroke-dasharray="579 1400"
             stroke-dashoffset="99" />
         </svg>
-        <div class="sectioner-header text-center" style="margin-top: -245px;">
+        <div class="sectioner-header text-center" style="margin-top: -325px;">
           <h1>Donate to the Africa Golf Foundation</h1>
           <img src="images/section-img.png" alt="#">
           <p>Join us in nurturing the next generation of African golfers. Help be the person that makes the difference in the lives of young athletes.</p>
@@ -147,93 +148,96 @@ maximum-scale=1.0, user-scalable=no" />
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8">
               <div class="payment-info wow bounce" data-wow-delay="0.2s">
-                <form id="payment_form" action="">
-                  <div class="row">
-                    <div class="col">
-                      <label for="fname">First Name</label>
-                      <input type="text" id="fname" class="form-input w-100" name="full-name" placeholder="Full Name" required>
-                    </div>
-                    <div class="col">
-                      <label for="lname">Last Name</label>
-                      <input type="text" id="lname" class="form-input w-100" name="full-name" placeholder="Full Name" required>
-                    </div>
-                  </div>
-                  <div class="form-item">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-input w-100" name="email" placeholder="you@email.com" required>
-                  </div>
-                  <div class="form-item">
-                    <label for="phone">Phone Number</label>
-                    <input id="phone" type="tel" name="phone" class="form-input phone-input" required/>
-                  </div>
-                  <!-- Donation Type Section with Button-like Radio Buttons -->
-                  <label for="donation-type" style="margin-top: 20px;">Donation Type</label>
-                  <div class="donation-type">
-                    <label class="donation-option">
-                      <input type="radio" name="donation-type" value="monetary" id="monetary-donation">
-                      <span class="option-label">Monetary Donation</span>
-                    </label>
-                    <label class="donation-option">
-                      <input type="radio" name="donation-type" value="equipment" id="equipment-donation">
-                      <span class="option-label">Equipment Donation</span>
-                    </label>
-                  </div>
-                  <!-- Monetary Donation Section -->
-                  <div class="form-item" id="monetary-section" style="display: none; margin-top: 10px;">
+                <div class="payment-container">
+                  <form id="payment_form" action="">
                     <div class="row">
                       <div class="col">
-                        <label for="amount">Donation Amount</label>
-                        <input type="number" id="amount" name="amount" class="form-input w-100" placeholder="100.00" required>
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" class="form-input w-100" name="full-name" placeholder="Full Name" required>
                       </div>
                       <div class="col">
-                        <label for="currency">Currency</label>
-                        <select id="currency" name="currency" class="form-input w-100">
-                          <option value="USD">$ USD</option>
-                          <option value="EUR">€ EUR</option>
-                          <option value="GBP">£ GBP</option>
-                          <option value="JPY">¥ JPY</option>
-                          <option value="AUD">$ AUD</option>
-                          <option value="CAD">$ CAD</option>
-                          <option value="CHF">CHF</option>
-                          <option value="CNY">¥ CNY</option>
-                          <option value="INR">₹ INR</option>
-                        </select>
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" class="form-input w-100" name="full-name" placeholder="Full Name" required>
                       </div>
                     </div>
-                    <div class="radio-group">
-                      <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="10.00"> $10.00
+                    <div class="form-item">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" class="form-input w-100" name="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-item">
+                      <label for="phone">Phone Number</label>
+                      <input id="phone" type="tel" name="phone" class="form-input donate-phone phone-input" required/>
+                    </div>
+                    <!-- Donation Type Section with Button-like Radio Buttons -->
+                    <label for="donation-type">Donation Type</label>
+                    <div class="donation-type">
+                      <label class="donation-option">
+                        <input type="radio" name="donation-type" value="monetary" id="monetary-donation">
+                        <span class="option-label">Monetary Donation</span>
                       </label>
-                      <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="50.00"> $50.00
-                      </label>
-                      <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="100.00"> $100.00
-                      </label>
-                      <label class="radio-option">
-                        <input type="radio" name="preset-amount" value="200.00"> $200.00
+                      <label class="donation-option">
+                        <input type="radio" name="donation-type" value="equipment" id="equipment-donation">
+                        <span class="option-label">Equipment Donation</span>
                       </label>
                     </div>
-                    <div>
-                    <div id="payment-methods">
-                      <label for="card-number">Card number:</label>
-                      <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+                    <!-- Monetary Donation Section -->
+                    <div class="form-item" id="monetary-section" style="display: none; margin-top: 10px;">
                       <div class="row">
                         <div class="col">
-                          <label for="expiry-date">Expires:</label>
-                          <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+                          <label for="amount">Donation Amount</label>
+                          <input type="number" id="amount" name="amount" class="form-input w-100" placeholder="100.00" required>
                         </div>
                         <div class="col">
-                          <label for="cvv">Card Verification Value (CVV):</label>
-                          <input type="text" id="cvv" name="cvv" placeholder="0000" required>
+                          <label for="currency">Currency</label>
+                          <select id="currency" name="currency" class="form-input w-100">
+                            <option value="USD">$ USD</option>
+                            <option value="EUR">€ EUR</option>
+                            <option value="GBP">£ GBP</option>
+                            <option value="JPY">¥ JPY</option>
+                            <option value="AUD">$ AUD</option>
+                            <option value="CAD">$ CAD</option>
+                            <option value="CHF">CHF</option>
+                            <option value="CNY">¥ CNY</option>
+                            <option value="INR">₹ INR</option>
+                          </select>
                         </div>
                       </div>
-                      <button type="button" id="add-method">+ Add Payment Method</button>
+                      <div class="radio-group">
+                        <label class="radio-option">
+                          <input type="radio" name="preset-amount" value="10.00"> $10.00
+                        </label>
+                        <label class="radio-option">
+                          <input type="radio" name="preset-amount" value="50.00"> $50.00
+                        </label>
+                        <label class="radio-option">
+                          <input type="radio" name="preset-amount" value="100.00"> $100.00
+                        </label>
+                        <label class="radio-option">
+                          <input type="radio" name="preset-amount" value="200.00"> $200.00
+                        </label>
+                      </div>
+                      <div>
+                      <div id="payment-methods">
+                        <label for="card-number">Card number:</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+                        <div class="row">
+                          <div class="col">
+                            <label for="expiry-date">Expires:</label>
+                            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+                          </div>
+                          <div class="col">
+                            <label for="cvv">Card Verification Value (CVV):</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="0000" required>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="button" id="add-method" style="margin-bottom: 10px;">+ Add Payment Method</button>
+                      <button type="button" id="remove-method" style="display: none;">- Remove Payment Method</button>
+                      </div>
                     </div>
-                    </div>
-                  </div>
-                  
-                </form>
+                    <button class="btn-grad w-100" type="submit" name="">Submit Donation</button>
+                  </form>
+                </div>
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-4" id="monetary-donation-summary" style="  position: relative">
@@ -251,7 +255,6 @@ maximum-scale=1.0, user-scalable=no" />
                     </div>
                   </div>
                 </div>
-                <button class="submit-button">Continue to Payment</button>
               </div>
             </div>            
           </div>
@@ -266,138 +269,144 @@ maximum-scale=1.0, user-scalable=no" />
 <!-----Donate End-----  -->
 
 <!-------payment Start------->
-<section class="payment  lime-dark-bg" id="2">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <svg class="about-curve-right" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="400" cy="400" fill="none"
-            r="154" stroke-width="64" stroke="#9b59b6"
-            stroke-dasharray="579 1400"
-            stroke-dashoffset="99" />
-        </svg>
-        <div class="sectioner-header text-center" style="margin-top: -285px;">
-          <h1>Make an Equipment Donation to the Africa Golf Foundation</h1>
-          <img src="images/section-img.png" alt="#">
-          <p>Join us in nurturing the next generation of African golfers. Help be the person that makes the difference in the lives of young athletes.</p>
-        </div>
-        <div class="section-content">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-              <div class="payment-info wow bounce" data-wow-delay="0.2s">
-                <form id="equipment_form" action="">
-                  <div class="row">
-                    <div class="col">
-                      <label for="fname">First Name</label>
-                      <input type="text" id="f-name" class="form-input w-100" name="f-name" placeholder="Full Name" required>
-                    </div>
-                    <div class="col">
-                      <label for="lname">Last Name</label>
-                      <input type="text" id="l-name" class="form-input w-100" name="l-name" placeholder="Full Name" required>
-                    </div>
-                  </div>
-                  <div class="form-item">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-input w-100" name="email" placeholder="you@email.com" required>
-                  </div>
-                  <div class="form-item">
-                    <label for="phone">Phone Number</label>
-                    <input id="phone" type="tel" name="phone" class="form-input phone-input" required/>
-                  </div>
-                  <div class="form-item" style="margin-top: 20px;">
-                    <h4>Equipment Donation</h4>
-                  </div>                 
-                  <div id="equipment-details">
-                    <div class="form-item">
+  <section class="equipment section-padding-20 lime-dark-bg" id="2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <svg class="about-curve-right" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="400" cy="400" fill="none"
+              r="154" stroke-width="64" stroke="#9b59b6"
+              stroke-dasharray="579 1400"
+              stroke-dashoffset="99" />
+          </svg>
+          <div class="sectioner-header text-center" style="margin-top: -320px;">
+            <h1>Make an Equipment Donation to the Africa Golf Foundation</h1>
+            <img src="images/section-img.png" alt="#">
+            <p>Join us in nurturing the next generation of African golfers. Help be the person that makes the difference in the lives of young athletes.</p>
+          </div>
+          <div class="section-content">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-8">
+                <div class="equipment_form wow bounce" data-wow-delay="0.2s">
+                  <div class="equipment-container">
+                    <form id="equipment_form" action="submit_form.php" method="POST">
                       <div class="row">
-                        <div class="col-lg-7">
-                          <label for="equipment-name-1">Name of equipment</label>
-                          <input type="text" id="equipment-name-1" class="form-input w-100" name="equipment-name[]" placeholder="eg Golf Clubs" required>
+                        <div class="col">
+                          <label for="fname">First Name</label>
+                          <input type="text" id="f_name" class="form-input w-100" name="f_name" placeholder="First Name" required>
                         </div>
-                        <div class="col-lg-5">
-                          <label for="equipment-quantity-1">Quantity</label>
-                          <input type="number" id="equipment-quantity-1" name="equipment-quantity[]" class="form-input w-100" placeholder="e.g 5" required>
+                        <div class="col">
+                          <label for="lname">Last Name</label>
+                          <input type="text" id="l_name" class="form-input w-100" name="l_name" placeholder="Last Name" required>
                         </div>
                       </div>
-                    </div>
-                    <button type="button" id="add-equipment">+ Add Equipment</button>
-                  </div>
-                  <label for="delivery-type" style="margin-top: 20px;">Delivery Options</label>
-                  <div class="delivery-type">
-                    <label class="delivery-option">
-                      <input type="radio" name="delivery-type" value="pick-up" id="pick-up">
-                      <span class="option-label">Can you please pick up?</span>
-                    </label>
-                    <label class="delivery-option">
-                      <input type="radio" name="delivery-type" value="drop-off" id="drop-off">
-                      <span class="option-label">We will deliver.</span>
-                    </label>
-                  </div>
-                  <div id="pick-up-section" style="display: none;">
-                    <div class="form-item">
-                      <label for="pick-up-address">Pick-up Address</label>
-                      <input type="text" name="pick-up-address" id="pick-up-address" class="form-input w-100" placeholder="101 Street Name, City Name" required>
-                    </div>
-                    <div class="form-item">
-                      <label for="pick-up-time">Pick-up Time</label>
-                      <input type="time" name="pick-up-time" id="pick-up-time" class="form-input w-100" required >
-                    </div>
-                  </div>
-                  <div id="drop-off-section" style="display: none;">
-                    <div class="form-item">
-                      <label for="drop-off-address">Delivery Address</label>
-                      <input type="text" class="form-input w-100" placeholder="101 Street Name, City Name" readonly>
-                    </div>
-                    <div class="form-item">
-                      <label for="drop-off-time">Drop-off Time</label>
-                      <div class="radio-group">
-                        <label class="radio-option">
-                          <input type="radio" name="preset-drop-off" value="10"> 09:00
+                      <div class="form-item">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-input w-100" name="email" placeholder="you@email.com" required>
+                      </div>
+                      <div class="form-item">
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" type="tel" name="phone" class="form-input donate-phone phone-input" required/>
+                      </div>
+                      <div class="form-item" style="margin-top: 20px;">
+                        <h4>Equipment Donation</h4>
+                      </div>                 
+                      <div id="equipment-details">
+                        <div class="form-item">
+                          <div class="row">
+                            <div class="col-lg-7">
+                              <label for="equipment-name-1">Name of equipment</label>
+                              <input type="text" id="equipment-name-1" class="form-input w-100" name="equipment-name[]" placeholder="eg Golf Clubs" required>
+                            </div>
+                            <div class="col-lg-5">
+                              <label for="equipment-quantity-1">Quantity</label>
+                              <input type="number" id="equipment-quantity-1" name="equipment-quantity[]" class="form-input w-100" placeholder="e.g 5" required>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="button" id="add-equipment">+ Add Equipment</button>
+                      </div>
+                      <label for="delivery-type" style="margin-top: 20px;">Delivery Options</label>
+                      <div class="delivery-type">
+                        <label class="delivery-option">
+                          <input type="radio" name="delivery-type" value="drop-off" id="drop-off">
+                          <span class="option-label">We will deliver.</span>
                         </label>
-                        <label class="radio-option">
-                          <input type="radio" name="preset-drop-off" value="50"> 12:00
-                        </label>
-                        <label class="radio-option">
-                          <input type="radio" name="preset-drop-off" value="100"> 17:00
+                        <label class="delivery-option">
+                          <input type="radio" name="delivery-type" value="pick-up" id="pick-up">
+                          <span class="option-label">Request Pick-up</span>
                         </label>
                       </div>
-                    </div>
-                  </div>
-                  <button type="button" id="submit">Submit</button>
-                </form>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-4" id="equipment-donation-summary" style="  position: relative">
-              <div class="payment-info moving-div">
-                <h3>Donation Summary</h3>
-                <!-- Monetary Donation Summary -->
-                <div>
-                  <div class="payment-info-side">
-                    <label for="date">Date of Donation</label>
-                    <input type="text" id="date" name="date" class="date-input">
-                    <label for="equipment-summary">Equipment Summary</label>
-                    <div class="equipment-summary">
 
-                    </div>
-                    <div class="total">
-                      <p>Total Quantity <span id="total-quantity">0</span></p>
+                    <div id="drop-off-section" style="display: none;">
+                      <div class="form-item">
+                          <label for="drop-off-time">Delivery Time</label>
+                          <select name="drop-off-time" id="drop-off-time" class="form-input w-100" required>
+                              <option value="" disabled selected>Select a time</option>
+                              <option value="09:00">09:00</option>
+                              <option value="12:00">12:00</option>
+                              <option value="17:00">17:00</option>
+                          </select>
+                      </div>
+                      </div>
+                      <div id="pick-up-section" style="display: none;">
+                        <div class="form-item">
+                          <label for="pick-up-address">Pick-up Address</label>
+                          <input type="text" name="pick-up-address" id="pick-up-address" class="form-input w-100" placeholder="101 Street Name, City Name" required>
+                        </div>
+                        <div class="form-item">
+                          <label for="pick-up-time">Pick-up Time</label>
+                          <input type="time" name="pick-up-time" id="pick-up-time" class="form-input w-100" required >
+                        </div>
+                      </div>
+                      <button class="btn-grad w-100" type="submit" name="equipment_form">Submit Donation</button>
+                      </form>
                     </div>
                   </div>
                 </div>
-                <button class="submit-button orange-bg">Submit Application</button>
-              </div>
-            </div>            
+                <div class="col-sm-12 col-md-12 col-lg-4" id="equipment-donation-summary" style="  position: relative">
+                  <div class="payment-info moving-div">
+                    <h3>Donation Summary</h3>
+                    <!-- Monetary Donation Summary -->
+                    <div>
+                      <div class="payment-info-side">
+                        <label for="date">Date of Donation</label>
+                        <input type="text" id="date" name="date" class="date-input">
+                        <label for="equipment-summary">Equipment Summary</label>
+                        <div class="equipment-summary">
+
+                        </div>
+                        <div class="total">
+                          <p>Total Quantity <span id="total-quantity">0</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
           </div>
         </div>
       </div>
+      <div class="donate-end">
+        <img src="images/golf.png"/>
+      </div>
     </div>
-    <div class="donate-end">
-      <img src="images/golf.png"/>
-    </div>
-  </div>
-</section>
+  </section>
 <!-----Donate End-----  -->
-
+<!-- Loading Popup -->
+<div id="loadingPopup" class="overlay-popup" style="display: none;">
+  <div class="popup">
+      <p>Loading, please wait...</p>
+      <div class="loader-popup"></div>
+  </div>
+</div>
+<!-- Overlay HTML -->
+<div id="overlay-popup" class="overlay-popup"></div>
+<!-- Pop-up HTML -->
+<div id="popup" class="popup">
+  <p id="popup-message"></p>
+  <button onclick="redirectToEquipment()">Thank You</button>
+</div> 
 <!-------footer Start------->
 <section class="footer">
   <div class="row">
@@ -454,7 +463,7 @@ maximum-scale=1.0, user-scalable=no" />
     </div>
   </div>
 </section>
-
+</div>
 <!-------footer End------->
 
 <footer class="footer-copy">
@@ -481,5 +490,44 @@ maximum-scale=1.0, user-scalable=no" />
 		<!-- Owl Carousel JS -->
 <script src="js/owl-carousel.js"></script>
 <script src="js/main.js"></script>
+<script>
+  document.getElementById('equipment_form').addEventListener('submit', function(event) {
+      // Show the loading popup
+      document.getElementById('loadingPopup').style.display = 'block';
+  });
+  // Function to display pop-up message and show overlay
+  function showPopup(message) {
+      var popup = document.getElementById('popup');
+      var popupMessage = document.getElementById('popup-message');
+      var overlay = document.getElementById('overlay-popup');
+
+      popupMessage.innerText = message;
+      popup.classList.add('active');
+      overlay.classList.add('active');  // Show the overlay
+  }
+
+  // Function to hide pop-up and overlay and redirect to the contact page
+  function redirectToEquipment() {
+      var popup = document.getElementById('popup');
+      var overlay = document.getElementById('overlay-popup');
+
+      popup.classList.remove('active');
+      overlay.classList.remove('active');  // Hide the overlay
+      window.location.href = 'donate.html'; // Redirect to contact.html page
+  }
+
+  // Check the URL for query parameters
+  window.onload = function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('status')) {
+          var status = urlParams.get('status');
+          if (status === 'success') {
+              showPopup('Thank you for making this donation. We will get back to you by email on the logistics of your donation.');
+          } else if (status === 'error') {
+              showPopup('There was an error submitting your request. Please try again or send us a direct email.');
+          }
+      }
+  };
+</script>
 </body>
 </html>
