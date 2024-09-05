@@ -152,6 +152,20 @@ $(".modal-carousel").owlCarousel({
 });
 // Carousel End
 
+// International Phone Num Input section start
+document.addEventListener("DOMContentLoaded", function() {
+  // Select all input elements with the class "phone-input"
+  const phoneInputFields = document.querySelectorAll('.phone-input');
+  
+  // Apply the intlTelInput function to each phone input field
+  phoneInputFields.forEach(function(phoneInputField) {
+      window.intlTelInput(phoneInputField, {
+          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      });
+  });
+});
+  // International Phone Num Input section end
+
 // Modal Start
 document.addEventListener('DOMContentLoaded', (event) => {
 const modal1 = document.getElementById('modal1');
@@ -246,52 +260,92 @@ closeBtns.forEach(btn => {
         updateTotalAmount();
     });
     // Payment Section Add Card Start
-    document.getElementById('add-method').addEventListener('click', function() {
-        const paymentMethods = document.getElementById('payment-methods');
-        const newMethod = document.createElement('div');
-        newMethod.classList.add('payment-method');
-        newMethod.innerHTML = `
-            <label for="card-number" style="margin-top:20px;">Card number:</label>
-            <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
-            <div class="row">
-                <div class="col">
-                    <label for="expiry-date">Expires:</label>
-                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
-                </div>
-                <div class="col">
-                    <label for="cvv">Card Verification Value (CVV):</label>
-                    <input type="text" id="cvv" name="cvv" placeholder="0000" required>
-                </div>
-            </div>
-
-            <button type="button" class="remove-method">Remove</button>
-        `;
-        paymentMethods.appendChild(newMethod);
-
-        newMethod.querySelector('.remove-method').addEventListener('click', function() {
-            paymentMethods.removeChild(newMethod);
-        });
-    });
-
-    document.querySelectorAll('.remove-method').forEach(button => {
-        button.addEventListener('click', function() {
-            button.parentElement.remove();
-        });
-    });
+    document.addEventListener("DOMContentLoaded", function() {
+      const addMethodBtn = document.getElementById('add-method');
+      const removeMethodBtn = document.getElementById('remove-method');
+      const paymentMethodsContainer = document.getElementById('payment-methods');
+      
+      // Function to create a new payment method block
+      function createPaymentMethod() {
+          const newMethod = document.createElement('div');
+          newMethod.classList.add('payment-method');
+          newMethod.innerHTML = `
+              <label for="card-number">Card number:</label>
+              <input type="text" name="card-number" placeholder="0000 0000 0000 0000" required>
+              <div class="row">
+                  <div class="col">
+                      <label for="expiry-date">Expires:</label>
+                      <input type="text" name="expiry-date" placeholder="MM/YYYY" required>
+                  </div>
+                  <div class="col">
+                      <label for="cvv">CVV:</label>
+                      <input type="text" name="cvv" placeholder="0000" required>
+                  </div>
+              </div>
+          `;
+          paymentMethodsContainer.appendChild(newMethod);
+      }
+  
+      // Add payment method event listener
+      addMethodBtn.addEventListener('click', function() {
+          createPaymentMethod();
+          // Show remove button only if there is more than one payment method
+          if (paymentMethodsContainer.children.length > 1) {
+              removeMethodBtn.style.display = 'inline-block';
+          }
+      });
+  
+      // Remove payment method event listener
+      removeMethodBtn.addEventListener('click', function() {
+          if (paymentMethodsContainer.children.length > 1) {
+              paymentMethodsContainer.removeChild(paymentMethodsContainer.lastElementChild);
+          }
+          // Hide remove button if only one payment method is left
+          if (paymentMethodsContainer.children.length === 1) {
+              removeMethodBtn.style.display = 'none';
+          }
+      });
+  });
+  
       // JavaScript to handle donation type selection
-    document.getElementById('pick-up').addEventListener('change', function() {
-        if (this.checked) {
-        document.getElementById('pick-up-section').style.display = 'block';
-        document.getElementById('drop-off-section').style.display = 'none'; // Show pick-up section
+document.addEventListener('DOMContentLoaded', function() {
+    const dropOffRadio = document.getElementById('drop-off');
+    const pickUpRadio = document.getElementById('pick-up');
+    const dropOffSection = document.getElementById('drop-off-section');
+    const pickUpSection = document.getElementById('pick-up-section');
+    const dropOffTime = document.getElementById('drop-off-time');
+    const pickUpAddress = document.getElementById('pick-up-address');
+    const pickUpTime = document.getElementById('pick-up-time');
+
+    function toggleSections() {
+        if (dropOffRadio.checked) {
+            dropOffSection.style.display = 'block';
+            pickUpSection.style.display = 'none';
+            dropOffTime.required = true;
+            pickUpAddress.required = false;
+            pickUpTime.required = false;
+        } else if (pickUpRadio.checked) {
+            dropOffSection.style.display = 'none';
+            pickUpSection.style.display = 'block';
+            dropOffTime.required = false;
+            pickUpAddress.required = true;
+            pickUpTime.required = true;
+        } else {
+            dropOffSection.style.display = 'none';
+            pickUpSection.style.display = 'none';
+            dropOffTime.required = false;
+            pickUpAddress.required = false;
+            pickUpTime.required = false;
         }
-    });
-    document.getElementById('drop-off').addEventListener('change', function() {
-        if (this.checked) {
-        document.getElementById('drop-off-section').style.display = 'block'; 
-        document.getElementById('pick-up-section').style.display = 'none';
-        // Show drop-off section
-        } 
-    });
+    }
+
+    dropOffRadio.addEventListener('change', toggleSections);
+    pickUpRadio.addEventListener('change', toggleSections);
+
+    // Initialize on page load
+    toggleSections();
+});
+
     // JavaScript to ensure card number follows Mastercard format and auto-separates into 4-digit groups
     document.getElementById('card-number').addEventListener('input', function(e) {
         let cardNumber = this.value.replace(/\s+/g, ''); // Remove any spaces
@@ -428,23 +482,7 @@ function updateEquipmentSummary() {
   
   // Initialize the summary on page load
   updateEquipmentSummary();
-  
-// International Phone Num Input section start
-document.addEventListener('DOMContentLoaded', function() {
-    // Select all phone input fields with the name 'phone'
-    const phoneInputFields = document.querySelectorAll("input[name='phone']");
-  
-    phoneInputFields.forEach(function(phoneInputField) {
-      window.intlTelInput(phoneInputField, {
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-      });
-    });
-  });
-  // International Phone Num Input section end
-  
-
-
-  
+    
 // Function to get the current date formatted as DD/MM/YYYY
 function getCurrentDateFormatted() {
     const today = new Date();
@@ -484,6 +522,8 @@ function getCurrentDateFormatted() {
         icon.classList.replace("fa-minus", "fa-plus"); // Change icon to plus
     }
 }
+
+
 
 
 
